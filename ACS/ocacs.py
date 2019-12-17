@@ -278,20 +278,133 @@ class ocacs(object):
 
 
     # Function for looping all tables
-    #def acsCreateFc(self, geoLevel):
-    #    """
-    #    Function for looping all geodatabase tables.
-    #    Creating geodatabase feature classes (for a single geography) by thematic census table and adds alias from metadata fields.
-    #    """
-    #    try:
-    #        startTime = time()
-    #        print("\nScript started on {0}".format(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
-    #        print("\n\tBeginning general operations:")
+    def acsCreateFc(self, geoLevel):
+        """
+        Function for looping all geodatabase tables.
+        Creating geodatabase feature classes (for a single geography) by thematic census table and adds alias from metadata fields.
+        """
+        try:
+            startTime = time()
+            print("\nScript started on {0}".format(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
+            print("\n\tBeginning general operations:")
 
-    #        # Define levels, names, workspaces, etc.
-    #        print("\tSetting up operational definitions...")
-    #        acrpy.env.workspace = self.prjDir
-    #        inGdb = arcpy.ListWorkspaces("*_{0}*".format(geoLevel), "FileGDB")[0]
-    #        arcpy.env.workspace = inGdb
-    #        inTables = arcpy.ListTables("X*")
-    #        arcpy.env.workspace = os.path.join(self.dataOrigin, self.prefix)
+            # Define levels, names, workspaces, etc.
+            print("\tSetting up operational definitions...")
+            acrpy.env.workspace = self.prjDir
+            inGdb = arcpy.ListWorkspaces("*_{0}*".format(geoLevel), "FileGDB")[0]
+            arcpy.env.workspace = inGdb
+            inTables = arcpy.ListTables("X*")
+            arcpy.env.workspace = os.path.join(self.dataOrigin, self.prefix)
+            outGdb = arcpy.ListWorkspaces(f"*_{geoLevel}*", "FileGDB")[0]
+
+            # Navigate to the geodatabase's GEOGRAPHIES feature dataset and store it's classes
+            print("\t\tObtaining a list of Geographic feature classes in the main geodatabase...")
+            arcpy.env.workspace = outGdb
+            arcpy.env.overwriteOutput = True
+            gdbFc = arcpy.ListFeatureClasses(f"{self.prefix}_{geoLevel}")[0]
+            inFc = os.path.join(outGdb, gdbFc)
+
+            # Generating input configuration for looping structure
+            for table in inTables:
+                if (table != "X00_COUNTS" and table != "X99_IMPUTATION"):
+                    
+                    # 1. GENERAL COUNTS OPERATIONS
+                    print(f"\n\tBeginning the join counts operations for table {table}:")
+
+                    # Setup the local parameters for the counts join field
+                    print("\t\tSetting-up local parameters for the COUNTS join table...")
+                    table1 = "X00_COUNTS"
+                    table1Prefix = f"{table1}_"
+                    #inFeatures = os.path.join(outGdb, gdbFeatureClasses[0])
+                    joinField1 = "GEOID_Data"
+                    joinTable1 = os.path.join(inGdb, table1)
+                    joinField2 = "GEOID"
+
+                    # For the field lists below, we will use all fields except the first and last [1:-1]
+                    print("\t\tObtaining field lists...")
+                    fieldList1 = [f.name for f in arcpy.ListFields(joinTable1)]
+                    fieldList1 = fieldList1[1:len(fieldList1) - 1]
+                    fieldList1m = [i for i in fieldList1 if "m" in i]
+                    dropFields = ["GEOID", "OBJECTID"]
+
+                    # Join the feature class with the external table
+                    print("\t\tAdding a join and creating a feature layer...")
+                    lyr1 = arcpy.AddJoin_management(inFc, joinField1, joinTable1, joinField2, "KEEP_ALL")
+                    print("\t\tDeleting error margin fields...")
+                    lyr1 = arcpy.DeleteField_management(lyr1, fieldList1m)
+
+
+                    # 2. TABLE LINKING OPERATIONS
+                    
+                    # Looping structure
+                    endTime = time()
+                    execTime = str(timedelta(seconds = round(endTime - startTime)))
+                    print(f"\tBeginning looping structure. Total execution time: {execTime}")
+
+                    table2 = table
+                    table2Prefix = f"{table2}_"
+                    joinTable2 = os.path.join(inGdb, table2)
+                    print(f"\t\tTable to be joined: {table2}")
+
+                    # for the field lists below, we will use all fields except the first and last [1:-1]
+                    print(f"\t\tObtaining list of fields in table {table2}")
+                    fieldList2 = [f.name for f in arcpy.ListFields(joinTable2)]
+                    fieldList2 = fieldList2[1:len(fieldList2) - 1]
+                    fieldList2m = [i for i in fieldList2 if "m" in i]
+
+                    # Join the feature class with the external table
+                    print(f"\t\tAdding join and creating feature layer for table {table2}")
+                    lyr2 = arcpy.AddJoin_management(lyr1, joinField1, joinTable2, joinField2, "KEEP_ALL")
+                    print("\t\tDeleting error margin fields...")
+                    lyr2 = arcpy.DeleteField_management(lyr2, fieldList2m)
+
+                    # Copy the joined features to the feature dataset
+                    outFeatureClass = os.path.join(outGdb, f"{gdbFc}_{table2}")
+                    print("\t\tCopying temporary features to the project database...")
+                    arcpy.CopyFeatures_management(lyr2, outFeatureClass)
+
+                    # Delete extra fields from the output dataset
+                    delFields = []
+                    for t in [table1, table2]:
+                        delFields.append(t + "_GEOID")
+                        delFields.append(t + "_OBJECTID")
+                    print("\t\tDelecting extra ID variables from feature class...")
+                    arcpy.DeleteField_management(outFeatureClass, delFields)
+
+                    # Remove the temporary layer
+                    print("\t\tRemoving temporary layers...")
+                    arcpy.Delete_management(lyr1, lyr2)
+
+                    # Add feature class alias
+                    fcAlias = f"{aliasBase} {self.geoNames[geoLevel]} {table[:3]} {table.replace('_', ' ').title()[4:]}"
+                    print(f"\t\tAdding feature class alias: {fcAlias}")
+                    arcpy.AlterAliasName(outFeatureClass, fcAlias)
+
+                    endTime = time()
+                    execTime = str(timedelta(seconds = round(endTime - startTime)))
+
+                    #results.append([table2, countLists, execTime]}
+                    print(f"\t\tTable join complete for table: {table2}. Total execution time: {execTime}")
+
+                print("\tLooping structure for tables completed.")
+                endTime = time()
+                execTime = str(timedelta(seconds = round(endTime - startTime)))
+                print(f"\tScript ended on: {datetime.now.strftime('%m/%d/%Y %H:%M:%S'}. Cumulative execution time: {execTime}\n")
+
+            print(f"\nOverall script ended on: {datetime.now().strftime('%m/%d/%Y %H:%M:%S')}. Cumulative execution time: {execTime}\n")
+
+        except arcpy.ExecuteError:
+            # Print geoprocessing exception messages
+            print(arcpy.GetMessages(2))
+
+        except Exception as ex:
+            # Print the exception message
+            print(ex.args[0])
+
+        return
+
+
+
+
+
+
