@@ -1,4 +1,7 @@
-import os, arcpy, shutil
+import os, arcpy, shutil, csv, pandas
+from datetime import datetime, timedelta
+from time import time
+
 
 class ocacs(object):
     """
@@ -28,6 +31,7 @@ class ocacs(object):
         self.prefix = f"ACS{year}Y{est}"
         self.prjDir = prjDir
         self.dataOrigin = dataOrigin
+        self.xlsxMetadata = os.path.join(self.prjDir, "Metadata and Documentation", "MasterMetadata.xlsx")
 
         # Dictionary containing codes and aliases for each of the project's geography levels.
         self.geoNames = {
@@ -191,3 +195,99 @@ class ocacs(object):
         return
 
 
+
+
+    def acsAddGdbAlias(self, theme=None):
+        """
+        Function generating alias for fields in each geodatabase's census tables from a metadata excel file.
+        
+        Notes:
+            1. gdbPath is the path to the geodatabase for whom the table field aliases will be updated.
+            2. xlsxMetadata is the excel file containing the metadata (two columns: Field, and Alias)
+        """
+        try:
+            arcpy.env.workspace = self.dataOrigin
+            arcpy.env.overwriteOutput = True
+
+            workspaces = {l: arcpy.ListWorkspaces(f"ACS*{l}*", "FileGDB")[0] for l in self.geoLevels}
+
+            for level in self.geoLevels:
+                print(f"\nProcessing Level: {level}")
+                gdbPath = workspaces[level]
+
+                startTime = time()
+                print(f"\tScript started on: {datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")
+                os.chdir(gdbPath)
+                arcpy.env.workspace = gdbPath
+                arcpy.env.overwiteOutput = True
+
+                # Read metadata into an array
+                print("\t\tReading metadata excel file into an array...")
+                metaArray = pandas.read.excel(self.xlsxMetadata, sheet_name = "Metadata")
+                if theme == None:
+                    inTables = arcpy.ListTables("X*")
+                elif isinstance(theme, list):
+                    inTables = theme
+                elif isinstance(theme, str):
+                    inTables = [f"{theme}"]
+
+                endTime = time()
+                execTime = str(timedelta(seconds = round(endTime - startTime)))
+                print(f"\t\tEnd of preliminaries session. Total execution time: {execTime}\n")
+
+
+                for table in inTables:
+                    fieldList = [t.name for t in arcpy.ListFields(table)]
+                    metaList = [s for s in metaArray.values if s[0] in fieldList]
+                    countList = len(metaList)
+
+                    # Change fields and aliases for the table
+                    print(f"\t\tChanging field aliases for the table: {table}")
+                    startTime1 = time()
+
+                    for i, row in enumerate(metaList):
+                        if row[0] in fieldList:
+                            print(f"\t\t\t{table}: Alias ({i+1} of {countList}) field {row[0]}: {row[1]}")
+                            arcpy.AlterField_management(table, row[0], row[0], row[1])
+                    endTime = time()
+                    execTime = str(timedelta(seconds = round(endTime - startTime)))
+                    execTime1 = str(timedelta(seconds = round(endTime - startTime1)))
+                    print(f"\t\tCompleted table {table}. Total execution time: {execTime1} ({execTime} since script started)\n")
+
+        except arcpy.ExecuteError:
+            # Print geoprocessing exception messages
+            print(arcpy.GetMessages(2))
+        except Exception as ex:
+            # Print the exception message
+            print(ex.args[0])
+
+        return
+
+    # Returns the text prefix of the data tables
+    def removePrefix(self, text, textprefix):
+        if text.startswith(textprefix):
+            return text[len(textprefix):]
+        return text
+
+
+
+    # Function for looping all tables
+    def acsCreateFc(self, geoLevel):
+        """
+        Function for looping all geodatabase tables.
+        Creating geodatabase feature classes (for a single geography) by thematic census table and adds alias from metadata fields.
+        """
+        try:
+            startTime = time()
+            print("\nScript started on {0}".format(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
+            print("\n\tBeginning general operations:")
+
+            # Define levels, names, workspaces, etc.
+            print("\tSetting up operational definitions...")
+            acrpy.env.workspace = self.prjDir
+            inGdb = arcpy.ListWorkspaces("*_{0}*".format(geoLevel), "FileGDB")[0]
+            arcpy.env.workspace = inGdb
+            inTables = arcpy.ListTables("X*")
+            arcpy.env.workspace = os.path.join(self.dataOrigin, self.prefix)
+
+            return
