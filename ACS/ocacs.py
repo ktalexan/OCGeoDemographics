@@ -206,6 +206,9 @@ class ocacs(object):
             2. xlsxMetadata is the excel file containing the metadata (two columns: Field, and Alias)
         """
         try:
+            startTime = time()
+            print(f"\tScript started on: {datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")
+
             arcpy.env.workspace = self.dataOrigin
             arcpy.env.overwriteOutput = True
 
@@ -215,15 +218,13 @@ class ocacs(object):
                 print(f"\nProcessing Level: {level}")
                 gdbPath = workspaces[level]
 
-                startTime = time()
-                print(f"\tScript started on: {datetime.now().strftime('%m/%d/%Y %H:%M:%S')}")
                 os.chdir(gdbPath)
                 arcpy.env.workspace = gdbPath
                 arcpy.env.overwiteOutput = True
 
                 # Read metadata into an array
                 print("\t\tReading metadata excel file into an array...")
-                metaArray = pandas.read.excel(self.xlsxMetadata, sheet_name = "Metadata")
+                metaArray = pandas.read_excel(self.xlsxMetadata, sheet_name = "Metadata")
                 if theme == None:
                     inTables = arcpy.ListTables("X*")
                 elif isinstance(theme, list):
@@ -247,12 +248,17 @@ class ocacs(object):
 
                     for i, row in enumerate(metaList):
                         if row[0] in fieldList:
-                            print(f"\t\t\t{table}: Alias ({i+1} of {countList}) field {row[0]}: {row[1]}")
+                            print(f"\t\t\t[{level}] {table}: Alias ({i+1} of {countList}) field {row[0]}: {row[1]}")
                             arcpy.AlterField_management(table, row[0], row[0], row[1])
                     endTime = time()
                     execTime = str(timedelta(seconds = round(endTime - startTime)))
                     execTime1 = str(timedelta(seconds = round(endTime - startTime1)))
                     print(f"\t\tCompleted table {table}. Total execution time: {execTime1} ({execTime} since script started)\n")
+
+            endTime = time()
+            execTime = str(timedelta(seconds = round(endTime - startTime)))
+            print(f"\t\tTotal execution time: {execTime}\n")
+
 
         except arcpy.ExecuteError:
             # Print geoprocessing exception messages
@@ -272,22 +278,20 @@ class ocacs(object):
 
 
     # Function for looping all tables
-    def acsCreateFc(self, geoLevel):
-        """
-        Function for looping all geodatabase tables.
-        Creating geodatabase feature classes (for a single geography) by thematic census table and adds alias from metadata fields.
-        """
-        try:
-            startTime = time()
-            print("\nScript started on {0}".format(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
-            print("\n\tBeginning general operations:")
+    #def acsCreateFc(self, geoLevel):
+    #    """
+    #    Function for looping all geodatabase tables.
+    #    Creating geodatabase feature classes (for a single geography) by thematic census table and adds alias from metadata fields.
+    #    """
+    #    try:
+    #        startTime = time()
+    #        print("\nScript started on {0}".format(datetime.now().strftime("%m/%d/%Y %H:%M:%S")))
+    #        print("\n\tBeginning general operations:")
 
-            # Define levels, names, workspaces, etc.
-            print("\tSetting up operational definitions...")
-            acrpy.env.workspace = self.prjDir
-            inGdb = arcpy.ListWorkspaces("*_{0}*".format(geoLevel), "FileGDB")[0]
-            arcpy.env.workspace = inGdb
-            inTables = arcpy.ListTables("X*")
-            arcpy.env.workspace = os.path.join(self.dataOrigin, self.prefix)
-
-            return
+    #        # Define levels, names, workspaces, etc.
+    #        print("\tSetting up operational definitions...")
+    #        acrpy.env.workspace = self.prjDir
+    #        inGdb = arcpy.ListWorkspaces("*_{0}*".format(geoLevel), "FileGDB")[0]
+    #        arcpy.env.workspace = inGdb
+    #        inTables = arcpy.ListTables("X*")
+    #        arcpy.env.workspace = os.path.join(self.dataOrigin, self.prefix)

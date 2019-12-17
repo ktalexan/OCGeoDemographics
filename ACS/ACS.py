@@ -4,15 +4,17 @@ year = 2017
 est = 5
 
 prefix = f"ACS{year}Y{est}"
-prjDir = os.getcwd()
+prjDir = r"E:\Dev\Repos\OCGeoDemographics\ACS"
 dataOrigin = r"E:\ACS2017"
+
+os.chdir(prjDir)
 
 from ocacs import ocacs
 
 acs17 = ocacs(year, est, dataOrigin, prjDir)
 
 acs17.acsCreateGdbStructure()
-
+acs17.acsAddGdbAlias()
 
 
 xlsxMetadata = os.path.join(prjDir, "Metadata and Documentation", "MasterMetadata.xlsx")
