@@ -17,14 +17,14 @@
 
 
 1. [Block Groups](#Block-Groups)
-   1. [BG: Base Geography](#BG:-Basic-Geography)
-   2. [BGX01: Age and Sex](#BG:-Age-and-Sex)
-   3. [BGX02: Race](#BG:-Race)
+   1. [BG: Base Geography](#BG-Basic-Geography)
+   2. [BGX01: Age and Sex](#BG-Age-and-Sex)
+   3. [BGX02: Race](#BG-Race)
 
 
 ### Block Groups
 
-#### BG: Basic Geography
+#### BG Basic Geography
 
 Name | ACS2017Y5_BG
 :---|:---
@@ -35,7 +35,7 @@ Description | US Census American Community Survey (ACS) 2017, 5-year estimates o
 Terms of Use | Original datasets from [US Census TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov/) for the X01 - X27 Tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial, Dr. Kostas Alexandridis, GISP, on January 2020.
 
 
-#### BG: Age and Sex
+#### BG Age and Sex
 
 Name | ACS2017Y5_BG_X01_AGE_AND_SEX
 :---|:---
@@ -46,7 +46,7 @@ Description | US Census American Community Survey (ACS) 2017, 5-year estimates o
 Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov/) for the X01: Age and Sex Tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial, Dr. Kostas Alexandridis,, GISP, on January 2020.
 
 
-#### BG: Race
+#### BG Race
 
 Name | ACS2017Y5_BG_X02_Race
 :---|:---
