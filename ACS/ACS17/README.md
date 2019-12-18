@@ -12,7 +12,7 @@
 
 ## Geodatabase Layers, Descriptions, and ArcGIS Online Feature Service Metadata
 ---
-<br/><br/>
+<br/>
 
 #### Block Groups (base geography table)
 
