@@ -32,6 +32,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACS16\README.md" />
+    <Content Include="ACS17\README.html">
+      <SubType>Content</SubType>
+      <DependentUpon>ACS17\README.md</DependentUpon>
+    </Content>
     <Content Include="ACS17\README.md" />
     <Content Include="README.md" />
   </ItemGroup>
