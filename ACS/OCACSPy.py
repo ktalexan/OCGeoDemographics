@@ -33,7 +33,7 @@ class ocacs(object):
         arcpy.env.overwriteOutput = True
 
         # Read the file geodatabase workspaces in the input folder, and obtain a list of geodatabase names.
-        self.wkspListIn = arcpy.ListWorkspaces("ACS*", "FileGDB")
+        self.wrkspListIn = arcpy.ListWorkspaces("ACS*", "FileGDB")
         self.gdbListIn = [os.path.split(w)[1] for w in self.wkspListIn]
 
         # Get all the prefixes and geo-levels from the geodatabase list.

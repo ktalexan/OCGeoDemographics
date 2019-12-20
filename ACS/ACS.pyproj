@@ -28,6 +28,9 @@
     <Compile Include="OCACSPy.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="scratch.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ACS16\" />
