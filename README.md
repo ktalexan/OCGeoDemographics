@@ -29,7 +29,7 @@ The dataset incude 14 separate geographies, and 25 data tables per geography in 
     </thead>
     <tbody>
         <tr>
-            <td rowspan=3>Administrative</td>
+            <td rowspan=4>Administrative</td>
             <td>County</td>
             <td>COUNTY</td>
             <td>County of Orange</td>
@@ -45,10 +45,15 @@ The dataset incude 14 separate geographies, and 25 data tables per geography in 
             <td>Orange County Cities</td>
         </tr>
         <tr>
+            <td>ZIP Codes</td>
+            <td>ZCTA</td>
+            <td>ZIP Code Tabulation Areas for Orange County</td>
+        </tr>
+        <tr>
             <td rowspan = 3>Political</td>
             <td>Congressional Districts</td>
-            <td>CD115</td>
-            <td>Congressional Districts, 115th US Congress for Orange County</td>
+            <td>CD11X</td>
+            <td>Congressional Districts, 113th-116th US Congress for Orange County</td>
         </tr>
         <tr>
             <td>State Assembly</td>
@@ -77,7 +82,7 @@ The dataset incude 14 separate geographies, and 25 data tables per geography in 
             <td>Unified School Districts for Orange County</td>
         </tr>
         <tr>
-            <td rowspan = 5>Geographic/Census</td>
+            <td rowspan = 4>Census</td>
             <td>Urban Areas</td>
             <td>UA</td>
             <td>Urban Areas for Orange and Los Angeles Counties</td>
@@ -86,11 +91,6 @@ The dataset incude 14 separate geographies, and 25 data tables per geography in 
             <td>Public Use Microdata Areas</td>
             <td>PUMA</td>
             <td>Census Public Use Microdata Areas for Orange County</td>
-        </tr>
-        <tr>
-            <td>ZIP Codes</td>
-            <td>ZCTA</td>
-            <td>ZIP Code Tabulation Areas for Orange County</td>
         </tr>
         <tr>
             <td>Block Groups</td>
@@ -107,23 +107,6 @@ The dataset incude 14 separate geographies, and 25 data tables per geography in 
 
 
 <br/><br/>
-
-Geography | Abbrev | Description
----|---|---
-State | STATE | State of California Population/Housing ACS 5-year estimates.
-County | COUNTY |  County of Orange Population/Housing ACS 5-year estimates.
-County Subdivisions | COUSUB | County subdivision ACS 5-year estimates.
-Cities/Places | PLACE | Incorporated cities/places for ACS 5-year estimates.
-Block Groups | BG | Census block groups for Orange County.
-Census Tract | TRACT | Census tracts for Orange County.
-Congressional Disticts (115th) | CD115 | US Congressional districts (115th US Congress) for Orange County. Exceed county geographic boundaries.
-State Legislative Districts (Lower) | SLDL | California State Assembly Legislative Districts for Orange County. Exceed county geographic boundaries.
-State Legislative Ditricts (Upper) | SLDU | California State Senate Legislative Districts for Orange County. Exceed county geographic boundaries.
-Elementary School Districts | SDE | California Elementary School Districts for Orange County.
-Secondary School Districts | SDS | California Secondary School Districts for Orange County.
-Unified School Districts | SDU | California Unified School Districts for Orange County.
-Public Use Microdata Areas | PUMA | US Census Public Use Microdata Areas for Orange County.
-ZIP Code Tabulation Areas | ZCTA | ZIP Code Tabulation Areas for Orange County.
 
 
 
@@ -176,10 +159,10 @@ X01|160|718|718|718|718|||||||||
 X02|68|420|420|420|420|||||||||
 X03|48|110|110|110|110|||||||||
 X04|_|664|664|664|664|||||||||
-X05|_|1,692|1,692|1,692||||||||||
-X06|_|1,220|1,220|1,220||||||||||
-X07|150|1,782|3,082|2,432||||||||||
-X08|580|2,540|4,454|4,454||||||||||
+X05|_|1,692|1,692|1,692|1,692|||||||||
+X06|_|1,220|1,220|1,220|1,220|||||||||
+X07|150|1,782|3,082|2,432|3,082|||||||||
+X08|580|2,540|4,454|4,454|4,454|||||||||
 X09|230|312|312|312||||||||||
 X10|628|372|372|372||||||||||
 X11|_|744|744|744||||||||||
