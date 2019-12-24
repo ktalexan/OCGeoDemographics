@@ -101,10 +101,145 @@ print(f"\nSTEP")
 
 
 
+# D: DEMOGRAPHIC AND HOUSING ESTIMATES
+
+# D01: Sex and Age (Universe: Total population)
+d01 = {
+    "B01001e1": "Total population",
+    "B01001e2": "Male",
+    "B01001e3": "Male, under 5 years",
+    "B01001e4": "Male, 5 to 9 years",
+    "B01001e5": "Male, 10 to 14 years",
+    "B01001e6": "Male, 15 to 17 years",
+    "B01001e7": "Male, 18 and 19 years",
+    "B01001e8": "Male, 20 years",
+    "B01001e9": "Male, 21 years",
+    "B01001e10": "Male, 22 to 24 years",
+    "B01001e11": "Male, 25 to 29 years",
+    "B01001e12": "Male, 30 to 34 years",
+    "B01001e13": "Male, 35 to 39 years",
+    "B01001e14": "Male, 40 to 44 years",
+    "B01001e15": "Male, 45 to 49 years",
+    "B01001e16": "Male, 50 to 54 years",
+    "B01001e17": "Male, 55 to 59 years",
+    "B01001e18": "Male, 60 and 61 years",
+    "B01001e19": "Male, 62 to 64 years",
+    "B01001e20": "Male, 65 and 66 years",
+    "B01001e21": "Male, 67 to 69 years",
+    "B01001e22": "Male, 70 to 74 years",
+    "B01001e23": "Male, 75 to 79 years",
+    "B01001e24": "Male, 80 to 84 years",
+    "B01001e25": "Male, 85 years and over",
+    "B01001e26": "Female",
+    "B01001e27": "Female, under 5 years",
+    "B01001e28": "Female, 5 to 9 years",
+    "B01001e29": "Female, 10 to 14 years",
+    "B01001e30": "Female, 15 to 17 years",
+    "B01001e31": "Female, 18 and 19 years",
+    "B01001e32": "Female, 20 years",
+    "B01001e33": "Female, 21 years",
+    "B01001e34": "Female, 22 to 24 years",
+    "B01001e35": "Female, 25 to 29 years",
+    "B01001e36": "Female, 30 to 34 years",
+    "B01001e37": "Female, 35 to 39 years",
+    "B01001e38": "Female, 40 to 44 years",
+    "B01001e39": "Female, 45 to 49 years",
+    "B01001e40": "Female, 50 to 54 years",
+    "B01001e41": "Female, 55 to 59 years",
+    "B01001e42": "Female, 60 and 61 years",
+    "B01001e43": "Female, 62 to 64 years",
+    "B01001e44": "Female, 65 and 66 years",
+    "B01001e45": "Female, 67 to 69 years",
+    "B01001e46": "Female, 70 to 74 years",
+    "B01001e47": "Female, 75 to 79 years",
+    "B01001e48": "Female, 80 to 84 years",
+    "B01001e49": "Female, 85 years and over"
+    }
+
+# D02: Median Age (Universe: Total population)
+d02 = {
+    "B01002e1": "Median age (years)",
+    "B01002e2": "Male, median age (years)",
+    "B01002e3": "Female, median age (years)",
+    "B01002Ae1": "White alone, median age (years)",
+    "B01002Be1": "Black or African American alone, median age (years)",
+    "B01002Ce1": "American Indian and Alaska Native alone, median age (years)",
+    "B01002De1": "Asian alone, median age (years)",
+    "B01002Ee1": "Native Hawaiian and Other Pacific Islander alone, median age (years)",
+    "B01002Fe1": "Some other race alone, median age (years)",
+    "B01002Ge1": "Two or more races, median age (years)",
+    "B01002He1": "White alone, not Hispanic or Latino, median age (years)",
+    "B01002Ie1": "Hispanic or Latino, median age (years)"
+    }
 
 
 
-# 1. SOCIAL CHARACTERISTICS
+
+# D03: Race (Universe: Total population)
+d03 = {
+    "B02001e1": "Total population",
+    "B02001e2": "White alone",
+    "B02001e3": "Black or African American alone",
+    "B02001e4": "American Indian and Alaska Native alone",
+    "B02001e5": "Asian alone",
+    "B02001e6": "Native Hawaiian and Other Pacific Islander alone",
+    "B02001e7": "Some other race alone",
+    "B02001e8": "Two or more races"
+    }
+
+
+# D04: Race Alone or in Combination with One or More Other Races (Universe: Total population)
+d04 = {
+    "B02001e1": "Total population",
+    "B02008e1": "White",
+    "B02009e1": "Black or African American",
+    "B02010e1": "American Indian and Alaska Native",
+    "B02011e1": "Asian",
+    "B02012e1": "Native Hawaiian and Other Pacific Islander",
+    "B02013e1": "Some other race"
+    }
+
+
+# D05: Hispanic or Latino and Race (Universe: Total population)
+d05 = {
+    "B03002e1": "Total population",
+    "B03002e2": "Not Hispanic or Latino",
+    "B03002e3": "Not Hispanic or Latino, White alone",
+    "B03002e4": "Not Hispanic or Latino, Black or African American alone",
+    "B03002e5": "Not Hispanic or Latino, American Indian and Alaska Native alone",
+    "B03002e6": "Not Hispanic or Latino, Asian alone",
+    "B03002e7": "Not Hispanic or Latino, Native Hawaiian and Other Pacific Islander alone",
+    "B03002e8": "Not Hispanic or Latino, Some other race alone",
+    "B03002e9": "Not Hispanic or Latino, Two or more races",
+    "B03002e10": "Not Hispanic or Latino, Two races including some other race",
+    "B03002e11": "Not Hispanic or Latino, Two races excluding some other race, and three or more races",
+    "B03002e12": "Hispanic or Latino",
+    "B03002e13": "Hispanic or Latino, White alone",
+    "B03002e14": "Hispanic or Latino, Black or African American alone",
+    "B03002e15": "Hispanic or Latino, American Indian and Alaska Native alone",
+    "B03002e16": "Hispanic or Latino, Asian alone",
+    "B03002e17": "Hispanic or Latino, Native Hawaiian and Other Pacific Islander alone",
+    "B03002e18": "Hispanic or Latino, Some other race alone",
+    "B03002e19": "Hispanic or Latino, Two or more races",
+    "B03002e20": "Hispanic or Latino, Two races including some other race",
+    "B03002e21": "Hispanic or Latino, Two races excluding some other race, and three or more races"
+    }
+
+
+
+
+# 4.5. Citizen Voting Age Population (Universe: Citizen, 18 and over population)
+dhCitizen = {
+    "B": "Citizen, 18 and over population",
+    "B": "Citizen, Male",
+    "B": "Citize, Female"
+    }
+
+
+
+
+
+# S: SOCIAL CHARACTERISTICS
 # 1.1. Households by Type (Universe: Total households)
 
 scHouseholds = {
@@ -140,19 +275,20 @@ scRelationship = {
 
 
 # 1.3. Marital Status (Universe: Males or Females 15 years and over)
-scMaritalStatus = {
-    "B": "Males, 15 years and over",
-    "B": "Males, 15 years and over, never married",
-    "B": "Males, 15 years and over, now married, except separated",
-    "B": "Males, 15 years and over, separated",
-    "B": "Males, 15 years and over, widowed",
-    "B": "Males, 15 years and over, divorced",
-    "B": "Females, 15 years and over",
-    "B": "Females, 15 years and over, never married",
-    "B": "Females, 15 years and over, now married, except separated",
-    "B": "Females, 15 years and over, separated",
-    "B": "Females, 15 years and over, widowed",
-    "B": "Females, 15 years and over, divorced"
+sMaritalStatus = {
+    "B12001e1": "Total population, 15 years and over",
+    "B12001e2": "Males, 15 years and over",
+    "B12001e3": "Males, 15 years and over, never married",
+    "B12001e5": "Males, 15 years and over, now married, except separated",
+    "B12001e7": "Males, 15 years and over, separated",
+    "B12001e9": "Males, 15 years and over, widowed",
+    "B12001e10": "Males, 15 years and over, divorced",
+    "B12001e11": "Females, 15 years and over",
+    "B12001e12": "Females, 15 years and over, never married",
+    "B12001e14": "Females, 15 years and over, now married, except separated",
+    "B12001e16": "Females, 15 years and over, separated",
+    "B12001e18": "Females, 15 years and over, widowed",
+    "B12001e19": "Females, 15 years and over, divorced"
     }
 
 
@@ -184,12 +320,23 @@ scGrandparents = {
 
 # 1.6. School Enrollment (Universe: Population 3 years and over enrolled in school)
 scSchoolEnrollment = {
-    "B": "Population 3 years and over enrolled in school",
-    "B": "Nursery school, preschool",
-    "B": "Kindergarten",
-    "B": "Elementary school (grades 1-8)",
-    "B": "High school (grades 9-12)",
-    "B": "College or graduate school"
+    "B14007e2": "Population 3 years and over enrolled in school",
+    "B14007e3": "Nursery school, preschool",
+    "B14007e4": "Kindergarten",
+    "B14007e5": "Elementary school, grade 1",
+    "B14007e6": "Elementary school, grade 2",
+    "B14007e7": "Elementary school, grade 3",
+    "B14007e8": "Elementary school, grade 4",
+    "B14007e9": "Elementary school, grade 5",
+    "B14007e10": "Elementary school, grade 6",
+    "B14007e11": "Elementary school, grade 7",
+    "B14007e12": "Elementary school, grade 8",
+    "B14007e13": "High school, grade 9",
+    "B14007e14": "High school, grade 10",
+    "B14007e15": "High school, grade 11",
+    "B14007e16": "High school, grade 12",
+    "B14007e17": "College, undergraduate years",
+    "B14007e18": "Graduate or professional school"
     }
 
 
@@ -370,14 +517,14 @@ ecEmploymentStatus = {
 
 # 2.2. Commuting to Work (Universe: Workers 16 years and over)
 ecCommuting = {
-    "B": "Workers 16 years and over",
-    "B": "Car, truck, or van - drove alone",
-    "B": "Car, truck, or van - carpooled",
-    "B": "Public transportation (excluding taxicab)",
-    "B": "Walked",
-    "B": "Other means",
-    "B": "Worked at home",
-    "B": "Mean travel time to work (minutes)"
+    "B08301e1": "Workers 16 years and over",
+    "B08301e3": "Car, truck, or van - drove alone",
+    "B08301e4": "Car, truck, or van - carpooled",
+    "B08301e10": "Public transportation (excluding taxicab)",
+    "B08301e19": "Walked",
+    "B08301e20": "Other means",
+    "B08301e21": "Worked at home",
+    "B08135e1": "Aggregate travel time to work (minutes)"
     }
 
 
@@ -759,120 +906,10 @@ hcGrossRentPercentageIncome = {
 
 
 
-# 4. DEMOGRAPHIC AND HOUSING ESTIMATES
-
-# 4.1. Sex and Age (Universe: Total population)
-dhSexAge = {
-    "B01001e1": "Total population",
-    "B01001e2": "Male",
-    "B01001e26": "Female",
-    "B": "Sex ratio (males per 100 females)",
-    "B": "Under 5 years",
-    "B": "10 to 14 years",
-    "B": "15 to 19 years",
-    "B": "20 to 24 years",
-    "B": "25 tp 34 years",
-    "B": "35 to 44 years",
-    "B": "45 to 54 years",
-    "B": "55 to 59 years",
-    "B": "60 to 64 years",
-    "B": "65 to 74 years",
-    "B": "75 to 84 years",
-    "B": "85 years and over",
-    "B01002e1": "Median age (years)",
-    "B": "Under 18 years",
-    "B": "16 years and over",
-    "B": "18 years and over",
-    "B": "18 years and over, male",
-    "B": "18 years and over, female",
-    "B": "18 years and over, sex ratio (males per 100 females)",
-    "B": "21 years and over",
-    "B": "65 years and over",
-    "B": "65 years and over, male",
-    "B": "65 years and over, female",
-    "B": "65 years and over, sex ratio (males per 100 females)"
-    }
-
-
-# 4.2. Race (Universe: Total population)
-dhRace = {
-    "B": "Total population",
-    "B": "One race",
-    "B": "One race, White",
-    "B": "One race, Black or African American",
-    "B": "One race, American Indian and Alaska Native",
-    "B": "One race, American Indian and Alaska Native, Cherokee tribal grouping",
-    "B": "One race, American Indian and Alaska Native, Chippewa tribal grouping",
-    "B": "One race, American Indian and Alaska Native, Navajo tribal grouping",
-    "B": "One race, American Indian and Alaska Native, Sioux tribal grouping",
-    "B": "One race, Asian",
-    "B": "One race, Asian, Asian Indian",
-    "B": "One race, Asian, Chinese",
-    "B": "One race, Asian, Filipino",
-    "B": "One race, Asian, Japanese",
-    "B": "One race, Asian, Korean",
-    "B": "One race, Asian, Vietnamese",
-    "B": "One race, Asian, Other Asian",
-    "B": "One race, Native Hawaiian and Other Pacific Islander",
-    "B": "One race, Native Hawaiian and Other Pacific Islander, Native Hawaiian",
-    "B": "One race, Native Hawaiian and Other Pacific Islander, Guamanian or Chamorro",
-    "B": "One race, Native Hawaiian and Other Pacific Islander, Samoan",
-    "B": "One race, Native Hawaiian and Other Pacific Islander, Other Pacific Islander",
-    "B": "One race, Some other race",
-    "B": "Two or more races",
-    "B": "Two or more races, White and Black or African American",
-    "B": "Two or more races, White and American Indian and Alaska Native",
-    "B": "Two or more races, White and Asian",
-    "B": "Two or more races, Black or African American and American Indian and Alaska Native"
-    }
-
-
-# 4.3. Race Alone or in Combination with One or More Other Races (Universe: Total population)
-dhRaceAloneOrCombinations = {
-    "B": "Total population",
-    "B": "White",
-    "B": "Black or African American",
-    "B": "American Indian and Alaska Native",
-    "B": "Asian",
-    "B": "Native Hawaiian and Other Pacific Islander",
-    "B": "Some other race"
-    }
-
-
-# 4.4. Hispanic or Latino and Race (Universe: Total population)
-dhHispanicRace = {
-    "B": "Total population",
-    "B": "Hispanic or Latino (of any race)",
-    "B": "Hispanic or Latino, Mexican",
-    "B": "Hispanic or Latino, Puerto Rican",
-    "B": "Hispanic or Latino, Cuban",
-    "B": "Hispanic or Latino, Other Hispanic or Latino",
-    "B": "Not Hispanic or Latino",
-    "B": "Not Hispanic or Latino, White alone",
-    "B": "Not Hispanic or Latino, Black or African American alone",
-    "B": "Not Hispanic or Latino, American Indian and Alaska Native alone",
-    "B": "Not Hispanic or Latino, Asian alone",
-    "B": "Not Hispanic or Latino, Native Hawaiian and Other Pacific Islander alone",
-    "B": "Not Hispanic or Latino, Some other race alone",
-    "B": "Two or more races",
-    "B": "Two races including some other race",
-    "B": "Two races excluding some other race, and three or more races"
-    }
-
-
-# 4.5. Citizen Voting Age Population (Universe: Citizen, 18 and over population)
-dhCitizen = {
-    "B": "Citizen, 18 and over population",
-    "B": "Citizen, Male",
-    "B": "Citize, Female"
-    }
-
-
 
 arcpy.env.workspace = r"d:\OneDrive\Professional\Projects\OCPW\OCGeodemographics\OCACS\OCACS2017\Original\ACS_2017_5YR_BG_06_CALIFORNIA.gdb"
 
 
-strEst = " -- (Estimate)"
 
 hcGR = {}
 hcGRPI = {}
@@ -896,34 +933,72 @@ with arcpy.da.SearchCursor("BG_METADATA_2017", ["Short_Name", "Full_Name"]) as c
                 dhSA[row[0]] = 
 
 
-dhSexAge = {
-    "B01001e1": "Total population",
-    "B01001e2": "Male",
-    "B01001e26": "Female",
-    "B": "Sex ratio (males per 100 females)",
-    "B": "Under 5 years",
-    "B": "10 to 14 years",
-    "B": "15 to 19 years",
-    "B": "20 to 24 years",
-    "B": "25 tp 34 years",
-    "B": "35 to 44 years",
-    "B": "45 to 54 years",
-    "B": "55 to 59 years",
-    "B": "60 to 64 years",
-    "B": "65 to 74 years",
-    "B": "75 to 84 years",
-    "B": "85 years and over",
-    "B01002e1": "Median age (years)",
-    "B": "Under 18 years",
-    "B": "16 years and over",
-    "B": "18 years and over",
-    "B": "18 years and over, male",
-    "B": "18 years and over, female",
-    "B": "18 years and over, sex ratio (males per 100 females)",
-    "B": "21 years and over",
-    "B": "65 years and over",
-    "B": "65 years and over, male",
-    "B": "65 years and over, female",
-    "B": "65 years and over, sex ratio (males per 100 females)"
-    }
+strEst = " -- (Estimate)"
+dSexAge = {}
+dRace = {}
+dRaceAloneCombination = {}
+with arcpy.da.SearchCursor("BG_METADATA_2017", ["Short_Name", "Full_Name"]) as cursor:
+    for row in cursor:
+        if "e" in row[0]:
+            if "B01001" in row[0]:
+                dSexAge[row[0]] = row[1].replace(strEst, "").replace("SEX BY AGE: ", "")
+            if "B02001" in row[0]:
+                dRace[row[0]] = row[1].replace(strEst, "").replace("RACE: ", "")
+            for var in ["B02001e1", "B02008e1", "B02009e1", "B02010e1", "B02011e1", "B02012e1", "B02013e1"]:
+                if var in row[0] and "B02001e10" not in row[0]:
+                    dRaceAloneCombination[row[0]] = row[1].replace(strEst, "")
 
+
+
+
+arcpy.CreateFileGDB_management(dataOut,"OCACS2017Y5_DH_SEXBYAGE")
+
+tableLevels = {
+    "D01": "SexAge",
+    "D02": "Race",
+    "D03": "RaceCombinations",
+    "D04": "HispanicLatinoRace",
+    "D05": "CitizenVoting",
+    "S01": "HouseholdsByType",
+    "S02": "Relationship",
+    "S03": "MaritalStatus",
+    "S04": "Fertility",
+    "S05": "Grandparents",
+    "S06": "SchoolEnrollment",
+    "S07": "EducationalAttainment",
+    "S08": "VeteranStatus",
+    "S09": "DisabilityStatus",
+    "S10": "Residence",
+    "S11": "PlaceOfBirth",
+    "S12": "CitizenshipStatus",
+    "S13": "YearOfEntry",
+    "S14": "WorldRegionBirth",
+    "S15": "LanguageSpokenAtHome",
+    "S16": "Ancestry",
+    "S17": "ComputersInternet",
+    "E01": "EmploymentStatus",
+    "E02": "Commuting",
+    "E03": "Occupation",
+    "E04": "Industry",
+    "E05": "ClassOrWorker",
+    "E06": "IncomeBenefits",
+    "E07": "HealthInsurance",
+    "E08": "BelowPovertyLevel",
+    "H01": "HousingOccupancy",
+    "H02": "UnitsInStructure",
+    "H03": "YearStructureBuilt",
+    "H04": "Rooms",
+    "H05": "Bedrooms",
+    "H06": "HousingTenure",
+    "H07": "YearMovedIntoUnit",
+    "H08": "VehiclesAvailable",
+    "H09": "HouseHeatingFuel",
+    "H10": "SelectedCharacteristics",
+    "H11": "OccupantsPerRoom",
+    "H12": "HousingValue",
+    "H13": "MortgageStatus",
+    "H14": "OwnerCostsDollars",
+    "H15": "OwnerCostsPercentage",
+    "H16": "GrossRentDollars",
+    "H17": "GrossRentPerecentage"
+    }

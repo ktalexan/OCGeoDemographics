@@ -188,56 +188,423 @@ X99|532|718|746|746|746|718|704|||||||
 TOTAL|7,690|35,216|38,482|37,808|38,462|35,216|33,544|||||||
 ExecTime|1:48:43|18:50:30|23:21:07|22:35:30|23:10:17|18:42:47|17:47:56|||||||
 
+
+
+
 ### Description
 
+### 1. Demographic Characteristics (D)
 
-**SOCIAL CHARACTERISTICS**
-1. Households by Type (*total households*)
-2. Relationship (*population in households*)
-3. Marital Status (*males or femalse 15 years and over*)
-4. Fertility (*number of women 15 to 50 years old who had a birth in the past 12 months*)
-5. Grandparents (*number of grandparents living or responsible for own grandchildren under 18 years*)
-6. School Enrollment (*population 3 years and over enrolled in school*)
-7. Educational Attainment (*population 25 years and over*)
-8. Veteran Status (*civilian population 18 years and over*)
-9. Disability Status (*total civilian non-institutionalized populations*)
-10. Residence 1 Year Ago (*population 1 year and over*)
-11. Place of Birth (*total population*)
-12. US Citizenship Status (*foreign-born population*)
-13. Year of Entry (*popultion born outside the United States*)
-14. Wirkd Region of Birth of Foreign Born Population (*foreign-born population, excluding population born at sea*)
-15. Language Spoken at Home (*Population 5 years and over*)
-16. Ancestry (*Total population*)
-17. Computers and Internet Use (*total households*)
+<table>
+    <th>
+        <thead>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Universe</th>
+            <th>Table</th>
+            <th>Vars</th>
+            <th>No</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>D01</td>
+            <td>Sex and age</td>
+            <td>total population</td>
+            <td>X01</td>
+            <td>B01001</td>
+            <td>49</td>
+        </tr><tr>
+            <td>D02</td>
+            <td>Race</td>
+            <td>total population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>D03</td>
+            <td>Race alone, or in combination with one or more other races</td>
+            <td>total population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>D04</td>
+            <td>Hispanic or Latino and race</td>
+            <td>total population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>D05</td>
+            <td>Citizen voting age population</td>
+            <td>citizen, 18 and over population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 
-**ECONOMIC CHARACTERISTICS**
-1. Employment Status (*total households*)
-2. Commuting to Work (*workers 16 years and over*)
+### 2. Social Characteristics (S)
 
 
-**1. SOCIAL CHARACTERISTICS**
+<table>
+    <th>
+        <thead>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Universe</th>
+            <th>Table</th>
+            <th>Vars</th>
+            <th>No</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>S01</td>
+            <td>Households by type</td>
+            <td>total households</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S02</td>
+            <td>Relationship</td>
+            <td>population in households</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S03</td>
+            <td>Marital status</td>
+            <td>males or females 15 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S04</td>
+            <td>Fertility</td>
+            <td>number of women 15 to 50 years old who had a birth in the past 12 months</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S05</td>
+            <td>Grandparents</td>
+            <td>number of grandparents living or responsible for own grandchildren under 18 years</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S06</td>
+            <td>School enrollment</td>
+            <td>population 3 years and over enrolled in school</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S07</td>
+            <td>Educational attainment</td>
+            <td>population 25 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S08</td>
+            <td>Veteran status</td>
+            <td>civilian population 18 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S09</td>
+            <td>Disability status</td>
+            <td>total civilian non-institutionalized population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S10</td>
+            <td>Residence 1 year ago</td>
+            <td>population 1 year and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S11</td>
+            <td>Place of birth</td>
+            <td>total population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S12</td>
+            <td>US citizenship status</td>
+            <td>foreign-born population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S13</td>
+            <td>Year of entry</td>
+            <td>population born outside the US</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S14</td>
+            <td>World region of birth of foreign born population</td>
+            <td>foreign-born population, excluding population born at sea</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S15</td>
+            <td>Language spoken at home</td>
+            <td>population 5 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S16</td>
+            <td>Ancestry</td>
+            <td>total population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>S17</td>
+            <td>Computers and internet</td>
+            <td>total households</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+    </tbody>
+</table>
 
-**1.1. Households by Type**
-* Universe: total households
 
-Variable|Name
----|---
-B11001e1|Total households
-B11001e2|Family households (families)
-B11003e1|Family households with own children of the householder under 18 years
-B11001e3|Married-couple family households
-B11003e3|Married-couple family households with own children of the householder under 18 years
-B11001e5|Male householder, no wife present, family households
-B11003e10|Male householder, no wife present, family households with own children of the householder under 18 years
-B11001e6|Female householder, no husband present, family households
-B11003e16|Female householder, no husband present, family households with own children of the householder under 18 years
-B11001e7|Nonfamily households
-B11001e8|Nonfamily households, householder living alone
-B|Nonfamily households, householder living alone, 65 years and over
-B11005e2|Households with one or more people under 18 years
-B11007e2|Households with one or more people 65 years and over
-B|Average household size
-B|Average family size
+
+
+### 3. Economic Characteristics (E)
+
+
+<table>
+    <th>
+        <thead>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Universe</th>
+            <th>Table</th>
+            <th>Vars</th>
+            <th>No</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>E01</td>
+            <td>Employment status</td>
+            <td>population 16 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E02</td>
+            <td>Commuting to work</td>
+            <td>workers 16 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E03</td>
+            <td>Occupation</td>
+            <td>civilian employed population 16 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E04</td>
+            <td>Industry</td>
+            <td>civilian employed population 16 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E05</td>
+            <td>Class of worker</td>
+            <td>civilian employed population 17 years and over</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E06</td>
+            <td>Income and benefits</td>
+            <td>total households, families, nonfamilies, workers</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E07</td>
+            <td>Health insurance coverage</td>
+            <td>civilian non-institutional population, families, total population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>E08</td>
+            <td>Percentage of families and people whose income in the past 12 months is below the poverty level</td>
+            <td>families, population</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+    </tbody>
+</table>
+
+
+
+
+### 4. Housing Characteristics (H)
+
+
+<table>
+    <th>
+        <thead>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Universe</th>
+            <th>Table</th>
+            <th>Vars</th>
+            <th>No</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>H01</td>
+            <td>Housing occupancy</td>
+            <td>total housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H02</td>
+            <td>Units in structure</td>
+            <td>total housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H03</td>
+            <td>Year structure built</td>
+            <td>total housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H04</td>
+            <td>Rooms</td>
+            <td>total housubg units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H05</td>
+            <td>Bedrooms</td>
+            <td>total housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H06</td>
+            <td>Housing tenure</td>
+            <td>occupied housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H07</td>
+            <td>Year householder moved into unit</td>
+            <td>occupied housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H08</td>
+            <td>Vehicles available</td>
+            <td>occupied housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H09</td>
+            <td>House heating fuel</td>
+            <td>occupied housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H10</td>
+            <td>Selected housing characteristics</td>
+            <td>occupied housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H11</td>
+            <td>Occupants per room</td>
+            <td>occupied housing units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H12</td>
+            <td>Housing value</td>
+            <td>owner-occupied units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H13</td>
+            <td>Mortgage status</td>
+            <td>owner-occupied units</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H14</td>
+            <td>Selected monthly owner costs (SMOC)</td>
+            <td>housing units with or without a mortgage</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H15</td>
+            <td>Selected monthly owner costs as a percentage of household income (SMOCAPI)</td>
+            <td>housing units with or without a mortgage</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H16</td>
+            <td>Gross rent</td>
+            <td>occupied units paying rent</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>H17</td>
+            <td>Gross rent as a percentage of household income</td>
+            <td>occupied units paying rent</td>
+            <td>X</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+    </tbody>
+</table>
+
+
+
 
 
