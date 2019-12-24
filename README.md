@@ -190,11 +190,54 @@ ExecTime|1:48:43|18:50:30|23:21:07|22:35:30|23:10:17|18:42:47|17:47:56|||||||
 
 ### Description
 
-**SOCIAL CHARACTERISTICS**
 
-A. HOUSEHOLDS BY TYPE
-  1. Total households
-     i. Family households (families)
-       a. with own children of the householder under 18 years
-         2. 
-     ii. Married-couple family
+**SOCIAL CHARACTERISTICS**
+1. Households by Type (*total households*)
+2. Relationship (*population in households*)
+3. Marital Status (*males or femalse 15 years and over*)
+4. Fertility (*number of women 15 to 50 years old who had a birth in the past 12 months*)
+5. Grandparents (*number of grandparents living or responsible for own grandchildren under 18 years*)
+6. School Enrollment (*population 3 years and over enrolled in school*)
+7. Educational Attainment (*population 25 years and over*)
+8. Veteran Status (*civilian population 18 years and over*)
+9. Disability Status (*total civilian non-institutionalized populations*)
+10. Residence 1 Year Ago (*population 1 year and over*)
+11. Place of Birth (*total population*)
+12. US Citizenship Status (*foreign-born population*)
+13. Year of Entry (*popultion born outside the United States*)
+14. Wirkd Region of Birth of Foreign Born Population (*foreign-born population, excluding population born at sea*)
+15. Language Spoken at Home (*Population 5 years and over*)
+16. Ancestry (*Total population*)
+17. Computers and Internet Use (*total households*)
+
+
+**ECONOMIC CHARACTERISTICS**
+1. Employment Status (*total households*)
+2. Commuting to Work (*workers 16 years and over*)
+
+
+**1. SOCIAL CHARACTERISTICS**
+
+**1.1. Households by Type**
+* Universe: total households
+
+Variable|Name
+---|---
+B11001e1|Total households
+B11001e2|Family households (families)
+B11003e1|Family households with own children of the householder under 18 years
+B11001e3|Married-couple family households
+B11003e3|Married-couple family households with own children of the householder under 18 years
+B11001e5|Male householder, no wife present, family households
+B11003e10|Male householder, no wife present, family households with own children of the householder under 18 years
+B11001e6|Female householder, no husband present, family households
+B11003e16|Female householder, no husband present, family households with own children of the householder under 18 years
+B11001e7|Nonfamily households
+B11001e8|Nonfamily households, householder living alone
+B|Nonfamily households, householder living alone, 65 years and over
+B11005e2|Households with one or more people under 18 years
+B11007e2|Households with one or more people 65 years and over
+B|Average household size
+B|Average family size
+
+

@@ -43,12 +43,12 @@ class ocacs(object):
         geoList = [i.split(".gdb")[0].split("_")[3] for i in self.gdbListIn]
 
         if prodList.count(prodList[0]) == len(prodList):
-            self.prod = f"OC{prodList[0]}"
+            self.prod = f"{prodList[0]}"
             if yearList.count(yearList[0]) == len(yearList):
                 self.year = yearList[0]
                 if estList.count(estList[0]) == len(estList):
                     self.est = estList[0]
-                    self.prefix = f"{self.prod}_{self.year}_{self.est}"
+                    self.prefix = f"OC{self.prod}_{self.year}_{self.est}"
         
         # Compute the US Congress number based on the year of the ACS survey
         cdn = int(113 + (self.year - 2012) * 0.5)
@@ -89,7 +89,7 @@ class ocacs(object):
 
         # List of all the geographic code levels
         self.geoLevels = [key for key in self.geoNames.keys()]
-
+        
         return super().__init__()
 
 
@@ -102,11 +102,28 @@ class ocacs(object):
 
         print(f"\tDefining a list of new geodatabase geographies...")
 
-
+        # List of geodatabases to be created
         gdbListOut = {level: f"{self.prefix}_{level}.gdb" for level in self.geoLevels}
 
 
         # Create new geodatabases for census geographies (delete if they exist)
-        print(f"\tCreating new geodatabaes for ACS geographies:")
-        if os.path.exists(os.path.join(self.prjOut)) is False:
-            os.md
+        print(f"\tCreating new geodatabases for ACS geographies:")
+        for level, gdb in gdbListOut.items():
+            print(f"\t\tGeography: {level}")
+            pathGdb = os.path.join(dataOut, gdb)
+            if arcpy.Exists(pathGdb):
+                print(f"\t\t...geodatabase exists. Deleting...")
+                arcpy.Delete_management(pathGdb)
+            print(f"\t\t...Creating geodatabase: {gdb}")
+            arcpy.CreateFileGDB_management(self.dataOut, gdb)
+
+
+
+        print(f"\nSTEP 2: CREATING BASE GEOGRAPHIES IN GEODATABASE DIRECTORY")
+
+        # Starting with the COUNTY geodatabase
+        print("\tSetting up geography for County level:")
+
+        # Create a temporary layer of the original County data (national)
+        print("\t\tDefining workspace")
+        curWorkspace = self.wrkspListIn["COUNTY"]
