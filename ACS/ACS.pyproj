@@ -31,6 +31,9 @@
     <Compile Include="scratch.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TableVars.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ACS16\" />

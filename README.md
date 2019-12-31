@@ -193,6 +193,34 @@ ExecTime|1:48:43|18:50:30|23:21:07|22:35:30|23:10:17|18:42:47|17:47:56|||||||
 
 ### Description
 
+
+List of variables
+
+
+Group Characteristics||Fields
+---|---|---:
+|**Demographics**||**105**
+||D01: Sex and Age|49
+
+
+
+<table>
+    <thead>
+            <th colspan = "2">Group Characteristic</th>
+            <th>Number of fields</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan = "2"><b>Demographic (D)</b></th>
+            <td><b>105</b></td>
+        </tr><tr>
+            <td></td>
+            <td>D01: Sex and Age</td>
+            <td>49</td>
+    </tbody>
+</table>
+
+
 ### 1. Demographic Characteristics (D)
 
 <table>
