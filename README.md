@@ -194,445 +194,396 @@ ExecTime|1:48:43|18:50:30|23:21:07|22:35:30|23:10:17|18:42:47|17:47:56|||||||
 ### Description
 
 
-List of variables
-
-
-Group Characteristics||Fields
----|---|---:
-|**Demographics**||**105**
-||D01: Sex and Age|49
-
 
 
 <table>
-    <thead>
-            <th colspan = "2">Group Characteristic</th>
-            <th>Number of fields</th>
-    </thead>
-    <tbody>
-        <tr>
-            <td colspan = "2"><b>Demographic (D)</b></th>
-            <td><b>105</b></td>
-        </tr><tr>
-            <td></td>
-            <td>D01: Sex and Age</td>
-            <td>49</td>
-    </tbody>
+    <tr>
+        <th>Group Characteristic</th>
+        <th>Table</th>
+        <th>Fields</th>
+        <th>Count</th>
+    </tr>
+    <tr>
+        <td colspan="3"><b><a href=#d>Demographic (D)</a></b></td>
+        <td align="right"><b>105</b></td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#d01>D01: Sex and age</a></td>
+        <td>X1</td>
+        <td>B01001</td>
+        <td align="right">49</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#d02>D02: Median age by sex and race</a></td>
+        <td>X1</td>
+        <td>B01002</td>
+        <td align="right">12</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#d03>D3: Race</a></td>
+        <td>X2</td>
+        <td>B02001</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#d04>D4: Race alone or in combination with one or more other races</a></td>
+        <td>X2</td>
+        <td>B02001, B02008, B02009, B02011, B02012, B02013</td>
+        <td align="right">7</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#d05>D05: Hispanic or Latino and race</a></td>
+        <td>X3</td>
+        <td>B03002</td>
+        <td align="right">21</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#d06>D06: Citizen voting age population</a></td>
+        <td>X5</td>
+        <td>B05003</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td colspan="3"><b><a href=#s>Social (S)</a></b></td>
+        <td align="right"><b>500</b></td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s01>S01: Households by type</a></td>
+        <td>X11, X25</td>
+        <td>B11001, B11003, B11005, B11007, B25010</td>
+        <td align="right">17</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s02>S02: Relationship</a></td>
+        <td>X9</td>
+        <td>B09019</td>
+        <td align="right">19</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s03>S03: Marital status</a></td>
+        <td>X12</td>
+        <td>B12001</td>
+        <td align="right">13</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s04>S04: Fertility</a></td>
+        <td>X13</td>
+        <td>B13002, B13016</td>
+        <td align="right">11</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s05>S05: Grandparents</a></td>
+        <td>X10</td>
+        <td>B10050, B10056, B10057</td>
+        <td align="right">18</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s06>S06: School enrollment</a></td>
+        <td>X14</td>
+        <td>B14007</td>
+        <td align="right">17</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s07>S07: Educational attainment</a></td>
+        <td>X15</td>
+        <td>B15003</td>
+        <td align="right">25</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s08>S08: Veteran status</a></td>
+        <td>X21</td>
+        <td>B21001</td>
+        <td align="right">2</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s09>S09: Disability status and type by sex and age</a></td>
+        <td>X18</td>
+        <td>B18101, B18102, B18103, B18104, B18105, B18106, B18107</td>
+        <td align="right">77</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s10>S10: Disability status by age and health insurance coverage</a></td>
+        <td>X18</td>
+        <td>B18135</td>
+        <td align="right">16</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s11>S11: Residence 1 year ago</a></td>10
+        <td>X7</td>
+        <td>B07001</td>
+        <td align="right">6</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s12>S12: Place of birth</a></td>
+        <td>X5</td>
+        <td>B05002</td>
+        <td align="right">27</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s13>S13: Citizenship status by nativity in the US</a></td>
+        <td>X5</td>
+        <td>B05001</td>
+        <td align="right">6</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s14>S14: Year of entry</a></td>
+        <td>X5</td>
+        <td>B05005</td>
+        <td align="right">21</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s15>S15: World region of birth of foreign-born population</a></td>
+        <td>X5</td>
+        <td>B05006</td>
+        <td align="right">25</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s16>S16: Language spoken in households</a></td>
+        <td>X16</td>
+        <td>C16002</td>
+        <td align="right">6</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s17>S17: Language spoken at home</a></td>
+        <td>X16</td>
+        <td>B16004</td>
+        <td align="right">67</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s18>S18: Ancestry</a></td>
+        <td>X4</td>
+        <td>B04006</td>
+        <td align="right">114</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#s19>S19: Computers and internet use</a></td>
+        <td>X28</td>
+        <td>B28008, B28010, B28011</td>
+        <td align="right">13</td>
+    </tr><tr>
+        <td colspan="3"><b><a href=#e>Economic (E)</a></b></td>
+        <td align="right"><b>397</b></td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e01>E01: Employment status</a></td>
+        <td>X23</td>
+        <td>B23025</td>
+        <td align="right">7</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e02>E02: Work status by age of workers</a></td>
+        <td>X23</td>
+        <td>B23027</td>
+        <td align="right">36</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e03>E03: Commuting to work</a></td>
+        <td>X8</td>
+        <td>B08301, B08135</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e04>E04: Travel time to work</a></td>
+        <td>X8</td>
+        <td>B08012, B08013</td>
+        <td align="right">14</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e05>E05: Number of vehicles available for workers</a></td>
+        <td>X8</td>
+        <td>B08014, B08015</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e06>E06: Median age by means of transportation to work</a></td>
+        <td>X8</td>
+        <td>B08103</td>
+        <td align="right">7</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e07>E07: Means of transportation to work by race</a></td>
+        <td>X8</td>
+        <td>B08105</td>
+        <td align="right">64</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e08>E08: Occupation</a></td>
+        <td>X24</td>
+        <td>C24010</td>
+        <td align="right">53</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e09>E09: Industry</a></td>
+        <td>X24</td>
+        <td>C24030</td>
+        <td align="right">43</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e10>E10: Class of worker</a></td>
+        <td>X24</td>
+        <td>B24080</td>
+        <td align="right">19</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e11>E11: Household income and earnings in the past 12 months</a></td>
+        <td>X19, X22</td>
+        <td>B19001, B19013, B19025, B19081, B19083, B19051-60, B22010</td>
+        <td align="right">37</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e12>E12: Income and earnings in dollars</a></td>
+        <td>X19, X20</td>
+        <td>B19061-69, B19113, B19202, B19214, B19301, B19313, B20002</td>
+        <td align="right">31</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e13>E13: Family income in dollars</a></td>
+        <td>X19</td>
+        <td>B19101</td>
+        <td align="right">17</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e14>E14: Health insurance coverage</a></td>
+        <td>X27</td>
+        <td>B27010</td>
+        <td align="right">17</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e15>E15: Ratio of income to poverty level</a></td>
+        <td>X17</td>
+        <td>C17002</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e16>E16: Poverty in population in the past 12 months</a></td>
+        <td>X17</td>
+        <td>B17021</td>
+        <td align="right">7</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e17>E17: Poverty in households in the past 12 months</a></td>
+        <td>X17</td>
+        <td>B17017</td>
+        <td align="right">9</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e18>E18: Percentage of families and people whose income in the past 12 months is below the poverty level</a></td>
+        <td>X17</td>
+        <td>B17010</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#e19>E19: Poverty and income deficit (dollars) in the past 12 months for families</a></td>
+        <td>X17</td>
+        <td>B17011</td>
+        <td align="right">4</td>
+    </tr><tr>
+        <td colspan="3"><a href=#h><b>Housing (H)</b></a></td>
+        <td align="right"><b>406</b></td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h01>H01: Housing occupancy</a></td>
+        <td>X25</td>
+        <td>B25002</td>
+        <td align="right">3</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h02>H02: Units in structure</a></td>
+        <td>X25</td>
+        <td>B25024</td>
+        <td align="right">11</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h03>H03: Population in occupied housing units by tenure by units in structure</a></td>
+        <td>X25</td>
+        <td>B25033</td>
+        <td align="right">13</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h04>H04: Year structure built</a></td>
+        <td>X25</td>
+        <td>B25034-35, B25037</td>
+        <td align="right">15</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h05>H05: Rooms</a></td>
+        <td>X25</td>
+        <td>B25017-19, B25021-22</td>
+        <td align="right">18</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h06>H06: Bedrooms</a></td>
+        <td>X25</td>
+        <td>B25041-42</td>
+        <td align="right">21</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h07>H07: Housing tenure by race of householder</a></td>
+        <td>X25</td>
+        <td>B25003, B25007, B25010</td>
+        <td align="right">51</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h08>H08: Total population in occupied housing units by tenure</a></td>
+        <td>X25</td>
+        <td>B25008</td>
+        <td align="right">3</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h09>H09: Vacancy status</a></td>
+        <td>X25</td>
+        <td>B25004</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h10>H10: Occupied housing units by race of householder</a></td>
+        <td>X25</td>
+        <td>B25006</td>
+        <td align="right">8</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h11>H11: Year householder moved into unit</a></td>
+        <td>X25</td>
+        <td>B25038-39</td>
+        <td align="right">18</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h12>H12: Vehicles available</a></td>
+        <td>X25</td>
+        <td>B25044, B25046</td>
+        <td align="right">18</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h13>H13: House heating fuel</a></td>
+        <td>X25</td>
+        <td>B25040</td>
+        <td align="right">10</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h14>H14: Selected characteristics</a></td>
+        <td>X25</td>
+        <td>B25016, B25043, B25053</td>
+        <td align="right">9</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h15>H15: Occupants per room</a></td>
+        <td>X25</td>
+        <td>B25014</td>
+        <td align="right">13</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h16>H16: Housing value</a></td>
+        <td>X25</td>
+        <td>B25075-79, B25083</td>
+        <td align="right">32</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h17>H17: Price asked for vacant for-sale only, and sold, not occupied housing units</a></td>
+        <td>X25</td>
+        <td>B25085-86</td>
+        <td align="right">28</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h18>H18: Mortgage status</a></td>
+        <td>X25</td>
+        <td>B25081-82</td>
+        <td align="right">10</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h19>H19: Selected monthly owner costs (SMOC)</a></td>
+        <td>X25</td>
+        <td>B25087-89</td>
+        <td align="right">45</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h20>H20: Selected monthly owner costs as a percentage of household income (SMOCAPI)</a></td>
+        <td>X25</td>
+        <td>B25091-92</td>
+        <td align="right">26</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h21>H21: Contract rent distribution and rent asked distribution in dollars</a></td>
+        <td>X25</td>
+        <td>B25056-62</td>
+        <td align="right">7</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h22>H22: Gross rent</a></td>
+        <td>X25</td>
+        <td>B25063-65</td>
+        <td align="right">28</td>
+    </tr><tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;<a href=#h23>H23: Gross rent as percentage of household income</a></td>
+        <td>X25</td>
+        <td>B25070</td>
+        <td align="right">11</td>
+    </tr>
 </table>
 
+<br><br>
 
-### 1. Demographic Characteristics (D)
+### Detailed Description
+<br>
 
-<table>
-    <th>
-        <thead>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Universe</th>
-            <th>Table</th>
-            <th>Vars</th>
-            <th>No</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>D01</td>
-            <td>Sex and age</td>
-            <td>total population</td>
-            <td>X01</td>
-            <td>B01001</td>
-            <td>49</td>
-        </tr><tr>
-            <td>D02</td>
-            <td>Race</td>
-            <td>total population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>D03</td>
-            <td>Race alone, or in combination with one or more other races</td>
-            <td>total population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>D04</td>
-            <td>Hispanic or Latino and race</td>
-            <td>total population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>D05</td>
-            <td>Citizen voting age population</td>
-            <td>citizen, 18 and over population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+<h4 id="d">Demographic Characteristics</h4>
+
+<h5 id="d01">D01: Sex and Age</h5>
+
+Name|ACS2017_BG_D01
+:---|:---
+Tags|geodemographics; Orange County; California; US Census; ACS; American Community Survey; demographics; block groups; age and sex
+Summary|Age and Sex characteristics by Census Block Groups of the 2017 American Community Survey (ACS), 5-year estimates for Orange County, California. The purpose of the dataset is to assist spatial visualization and analysis of basic demographic statistical information in the county. Universe: Total population.
+Description | US Census American Community Survey (ACS) 2017, 5-year estimates of the key Age and Sex demographic characteristics for Orange County, California. The layer contains demographic data for table X01: Age and Sex of the ACS 2017 (5-year) dataset for Block Groups in Orange County, fields B01002 (Universe: Total population). The US Census geodemographic data are based on the 2017 TigerLines across multiple census geographies. The spatial geographies were merged with ACS demographic data tables.
+Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov) for the X01: Age and Sex Tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial Services, Dr. Kostas Alexandridis, GISP, on December 2019.
+
+<br>
+<h5 id="d02">D02: Median age by sex and race</h5>
+
+Name|ACS2017_BG_D02
+:---|:---
+Tags|geodemographics; Orange County; California; US Census; ACS; American Community Survey; demographics; block groups; sex; race; median age
+Summary|Median age by sex and race characteristics by Census Block Groups of the 2017 American Community Survey (ACS), 5-year estimates for Orange County, California. The purpose of the dataset is to assist spatial visualization and analysis of basic demographic statistical information in the county. Universe: Total population.
+Description | US Census American Community Survey (ACS) 2017, 5-year estimates of the key Age and Sex demographic characteristics for Orange County, California. The layer contains demographic data for table X01: Age and Sex of the ACS 2017 (5-year) dataset for Block Groups in Orange County, fields B01002 (Universe: Total population). The US Census geodemographic data are based on the 2017 TigerLines across multiple census geographies. The spatial geographies were merged with ACS demographic data tables.
+Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov) for the X01: Age and Sex Tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial Services, Dr. Kostas Alexandridis, GISP, on December 2019.
 
 
-### 2. Social Characteristics (S)
+<h5 id="d03">D03: Race</h5>
 
-
-<table>
-    <th>
-        <thead>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Universe</th>
-            <th>Table</th>
-            <th>Vars</th>
-            <th>No</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>S01</td>
-            <td>Households by type</td>
-            <td>total households</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S02</td>
-            <td>Relationship</td>
-            <td>population in households</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S03</td>
-            <td>Marital status</td>
-            <td>males or females 15 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S04</td>
-            <td>Fertility</td>
-            <td>number of women 15 to 50 years old who had a birth in the past 12 months</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S05</td>
-            <td>Grandparents</td>
-            <td>number of grandparents living or responsible for own grandchildren under 18 years</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S06</td>
-            <td>School enrollment</td>
-            <td>population 3 years and over enrolled in school</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S07</td>
-            <td>Educational attainment</td>
-            <td>population 25 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S08</td>
-            <td>Veteran status</td>
-            <td>civilian population 18 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S09</td>
-            <td>Disability status</td>
-            <td>total civilian non-institutionalized population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S10</td>
-            <td>Residence 1 year ago</td>
-            <td>population 1 year and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S11</td>
-            <td>Place of birth</td>
-            <td>total population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S12</td>
-            <td>US citizenship status</td>
-            <td>foreign-born population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S13</td>
-            <td>Year of entry</td>
-            <td>population born outside the US</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S14</td>
-            <td>World region of birth of foreign born population</td>
-            <td>foreign-born population, excluding population born at sea</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S15</td>
-            <td>Language spoken at home</td>
-            <td>population 5 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S16</td>
-            <td>Ancestry</td>
-            <td>total population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>S17</td>
-            <td>Computers and internet</td>
-            <td>total households</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-    </tbody>
-</table>
-
-
-
-
-### 3. Economic Characteristics (E)
-
-
-<table>
-    <th>
-        <thead>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Universe</th>
-            <th>Table</th>
-            <th>Vars</th>
-            <th>No</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>E01</td>
-            <td>Employment status</td>
-            <td>population 16 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E02</td>
-            <td>Commuting to work</td>
-            <td>workers 16 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E03</td>
-            <td>Occupation</td>
-            <td>civilian employed population 16 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E04</td>
-            <td>Industry</td>
-            <td>civilian employed population 16 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E05</td>
-            <td>Class of worker</td>
-            <td>civilian employed population 17 years and over</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E06</td>
-            <td>Income and benefits</td>
-            <td>total households, families, nonfamilies, workers</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E07</td>
-            <td>Health insurance coverage</td>
-            <td>civilian non-institutional population, families, total population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>E08</td>
-            <td>Percentage of families and people whose income in the past 12 months is below the poverty level</td>
-            <td>families, population</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-    </tbody>
-</table>
-
-
-
-
-### 4. Housing Characteristics (H)
-
-
-<table>
-    <th>
-        <thead>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Universe</th>
-            <th>Table</th>
-            <th>Vars</th>
-            <th>No</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>H01</td>
-            <td>Housing occupancy</td>
-            <td>total housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H02</td>
-            <td>Units in structure</td>
-            <td>total housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H03</td>
-            <td>Year structure built</td>
-            <td>total housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H04</td>
-            <td>Rooms</td>
-            <td>total housubg units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H05</td>
-            <td>Bedrooms</td>
-            <td>total housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H06</td>
-            <td>Housing tenure</td>
-            <td>occupied housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H07</td>
-            <td>Year householder moved into unit</td>
-            <td>occupied housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H08</td>
-            <td>Vehicles available</td>
-            <td>occupied housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H09</td>
-            <td>House heating fuel</td>
-            <td>occupied housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H10</td>
-            <td>Selected housing characteristics</td>
-            <td>occupied housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H11</td>
-            <td>Occupants per room</td>
-            <td>occupied housing units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H12</td>
-            <td>Housing value</td>
-            <td>owner-occupied units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H13</td>
-            <td>Mortgage status</td>
-            <td>owner-occupied units</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H14</td>
-            <td>Selected monthly owner costs (SMOC)</td>
-            <td>housing units with or without a mortgage</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H15</td>
-            <td>Selected monthly owner costs as a percentage of household income (SMOCAPI)</td>
-            <td>housing units with or without a mortgage</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H16</td>
-            <td>Gross rent</td>
-            <td>occupied units paying rent</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-            <td>H17</td>
-            <td>Gross rent as a percentage of household income</td>
-            <td>occupied units paying rent</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-    </tbody>
-</table>
-
-
-
+* Universe: total population
+* Census table: X02
+* Fields: B02001 (8 fields)
 
 

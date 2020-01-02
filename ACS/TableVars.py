@@ -3,7 +3,7 @@ def getTableVars():
 
     # D: DEMOGRAPHIC AND HOUSING ESTIMATES (6 groups, 105 fields)
 
-    # D01: Sex and age (Universe: total population) - 49 fields
+    # D01: Sex and age (Universe: total population) - 49 fields (X1)
     d01_SexAndAge = {
         "B01001e1": "Total population",
         "B01001e2": "Male",
@@ -56,7 +56,7 @@ def getTableVars():
         "B01001e49": "Female, 85 years and over"
         }
 
-    # D02: Median age by sex and race (Universe: total population) - 12 fields
+    # D02: Median age by sex and race (Universe: total population) - 12 fields (X1)
     d02_MedianAgeSexRace = {
         "B01002e1": "Median age (years)",
         "B01002e2": "Male, median age (years)",
@@ -72,7 +72,7 @@ def getTableVars():
         "B01002Ie1": "Hispanic or Latino, median age (years)"
         }
 
-    # D03: Race (Universe: total population) - 8 fields
+    # D03: Race (Universe: total population) - 8 fields (X2)
     d03_Race = {
         "B02001e1": "Total population",
         "B02001e2": "White alone",
@@ -84,7 +84,7 @@ def getTableVars():
         "B02001e8": "Two or more races"
         }
 
-    # D04: Race Alone or in Combination with One or More Other Races (Universe: total population) - 7 fields
+    # D04: Race Alone or in Combination with One or More Other Races (Universe: total population) - 7 fields (X2)
     d04_RaceCombinations = {
         "B02001e1": "Total population",
         "B02008e1": "White",
@@ -95,7 +95,7 @@ def getTableVars():
         "B02013e1": "Some other race"
         }
 
-    # D05: Hispanic or Latino and Race (Universe: total population) - 21 fields
+    # D05: Hispanic or Latino and Race (Universe: total population) - 21 fields (X3)
     d05_HispanicOrLatinoRace = {
         "B03002e1": "Total population",
         "B03002e2": "Not Hispanic or Latino",
@@ -120,7 +120,7 @@ def getTableVars():
         "B03002e21": "Hispanic or Latino, Two races excluding some other race, and three or more races"
         }
 
-    # D06: Citizen Voting Age Population (Universe: citizen, 18 and over population) - 8 fields
+    # D06: Citizen Voting Age Population (Universe: citizen, 18 and over population) - 8 fields (X5)
     d06_CitizenVotingAge = {
         "B05003e8": "Male, 18 years and over",
         "B05003e9": "Male, Native US Citizen, 18 years and over",
@@ -136,7 +136,7 @@ def getTableVars():
 
     # S: SOCIAL CHARACTERISTICS (19 groups, 500 fields)
 
-    # S01: Households by Type (Universe: total households) - 17 fields
+    # S01: Households by Type (Universe: total households) - 17 fields (X11)
 
     s01_HouseholdsType = {
         "B11001e1": "Total households",
@@ -158,7 +158,7 @@ def getTableVars():
         "B11003e1": "Total families"
         }
 
-    # S02: Relationship (Universe: population in households) - 19 fields
+    # S02: Relationship (Universe: population in households) - 19 fields (X9)
     s02_Relationship = {
         "B09019e2": "Population in households",
         "B09019e4": "Householder",
@@ -181,7 +181,7 @@ def getTableVars():
         "B09019e23": "Non-relatives, other"
         }
 
-    # S03: Marital Status (Universe: males or Females 15 years and over) - 13 fields
+    # S03: Marital Status (Universe: males or Females 15 years and over) - 13 fields (X12)
     s03_MaritalStatus = {
         "B12001e1": "Total population, 15 years and over",
         "B12001e2": "Males, 15 years and over",
@@ -198,7 +198,7 @@ def getTableVars():
         "B12001e19": "Females, 15 years and over, divorced"
         }
 
-    # S04: Fertility (Universe: number of women 15 to 50 years old who had a birth in the past 12 months) - 11 fields
+    # S04: Fertility (Universe: number of women 15 to 50 years old who had a birth in the past 12 months) - 11 fields (X13)
     s04_Fertility = {
         "B13002e1": "Women 15 to 50 years",
         "B13002e2": "Women 15 to 50 years old who had a birth in the past 12 months",
@@ -213,7 +213,7 @@ def getTableVars():
         "B13016e9": "Women 45 to 50 years old who had a birth in the past 12 months"
         }
 
-    # S05: Grandparents (Universe: number of grandparents living or responsible for own grandchildren under 18 years) - 18 fields
+    # S05: Grandparents (Universe: number of grandparents living or responsible for own grandchildren under 18 years) - 18 fields (X10)
     s05_Grandparents = {
         "B10050e1": "Population 30 years and over",
         "B10050e2": "Number of grandparents living with own grandchildren under 18 years",
@@ -235,7 +235,7 @@ def getTableVars():
         "B10057e8": "Unmarried grandparents living with own grandchildren under 18 years, responsible for grandchildren"
         }
 
-    # S06: School Enrollment (Universe: Population 3 years and over enrolled in school)
+    # S06: School Enrollment (Universe: Population 3 years and over enrolled in school) - 17 fields (X14)
     s06_SchoolEnrollment = {
         "B14007e2": "Population 3 years and over enrolled in school",
         "B14007e3": "Nursery school, preschool",
@@ -256,7 +256,7 @@ def getTableVars():
         "B14007e18": "Graduate or professional school"
         }
 
-    # S07: Educational Attainment (Universe: Population 25 years and over)
+    # S07: Educational Attainment (Universe: Population 25 years and over) - 25 fields (X15)
     s07_EducationalAttainment = {
         "B15003e1": "Population 25 years and over",
         "B15003e2": "No schooling completed",
@@ -285,13 +285,13 @@ def getTableVars():
         "B15003e25": "Doctorate degree"
         }
 
-    # S08: Veteran Status (Universe: Civilian population 18 years and over)
+    # S08: Veteran Status (Universe: Civilian population 18 years and over) - 2 fields (X21)
     s08_VeteranStatus = {
         "B21001e1": "Civilian population 18 years and over",
         "B21001e2": "Civilian veterans"
         }
 
-    # S09: Disability Status and Type by Sex and Age (Universe: Total civilian non-institutionalized population)
+    # S09: Disability Status and Type by Sex and Age (Universe: Total civilian non-institutionalized population) - 77 fields (X18)
     s09_DisabilitySexAge = {
         "B18101e1": "Total civilian non-institutionalized population",
         "B18101e2": "Male",
@@ -372,7 +372,7 @@ def getTableVars():
         "B18107e26": "Female, 75 years and over, with independent living difficulty"
         }
 
-    # S10: Disability Status by Age and Health Insurance Coverage (Universe: Civilian non-institutionalized population)
+    # S10: Disability Status by Age and Health Insurance Coverage (Universe: Civilian non-institutionalized population) - 16 fields (X18)
     s10_DisabilityAgeHealthInsurance = {
         "B18135e1": "Total civilian non-institutionalized population",
         "B18135e2": "Under 19 years",
@@ -392,7 +392,7 @@ def getTableVars():
         "B18135e29": "65 years and over with a disability, without health insurance",
         }
 
-    # S11: Residence 1 Year Ago (Universe: Population 1 year and over)
+    # S11: Residence 1 Year Ago (Universe: Population 1 year and over) - 6 fields (X7)
     s11_Residence = {
         "B07001e1": "Population 1 year and over",
         "B07001e17": "Same house 1 year ago",
@@ -402,7 +402,7 @@ def getTableVars():
         "B07001e81": "Moved from abroad"
         }
 
-    # S12: Place of Birth (Universe: Total population)
+    # S12: Place of Birth (Universe: Total population) - 27 fields (X5)
     s12_PlaceOfBirth = {
         "B05002e1": "Total population",
         "B05002e2": "Native population",
@@ -433,7 +433,7 @@ def getTableVars():
         "B05002e27": "Foreign-born population, not a US citizen, Northern America"
         }
 
-    # S13: Citizenship status by Nativity in the US (Universe: Total population)
+    # S13: Citizenship status by Nativity in the US (Universe: Total population) - 6 fields (X5)
     s13_CitizenshipStatus = {
         "B05001e1": "Total population",
         "B05001e2": "US citizen, born in the US",
@@ -443,7 +443,7 @@ def getTableVars():
         "B05001e6": "Not a US citizen"
         }
 
-    # S14: Year of Entry (Universe: Population born outside the United States)
+    # S14: Year of Entry (Universe: Population born outside the United States) - 21 fields (X5)
     s14_YearOfEntry = {
         "B05005e1": "Population born outside the US",
         "B05005e2": "Entered 2010 or later",
@@ -468,7 +468,7 @@ def getTableVars():
         "B05005e21": "Entered before 1990, foreign-born, not a US citizen"
         }
 
-    # S15: World Region of Birth of Foreign Born Population (Universe: Foreign-born population, excluding population born at sea)
+    # S15: World Region of Birth of Foreign Born Population (Universe: Foreign-born population, excluding population born at sea) - 25 fields (X5)
     s15_BirthRegion = {
         "B05006e1": "Foreign born population, excluding population born at sea",
         "B05006e2": "Europe",
@@ -497,7 +497,7 @@ def getTableVars():
         "B05006e160": "Northern America"
         }
 
-    # S16: Language Spoken in Households (Universe: Total households)
+    # S16: Language Spoken in Households (Universe: Total households) - 6 fields (X16)
     s16_LanguageSpokenHouseholds = {
         "C16002e1": "Total households",
         "C16002e2": "English only households",
@@ -507,7 +507,7 @@ def getTableVars():
         "C16002e12": "Other languages households"
         }
 
-    # S17: Language Spoken at Home (Universe: Population 5 years and over)
+    # S17: Language Spoken at Home (Universe: Population 5 years and over) - 67 fields (X16)
     s17_LanguageSpokenHome = {
         "B16004e1": "Population 5 years and over",
         "B16004e2": "5 to 17 years",
@@ -578,7 +578,7 @@ def getTableVars():
         "B16004e67": "65 years and over, speak other languages, speak English 'not at all'"
         }
 
-    # S18: Ancestry (Universe: Total population reporting ancestry)
+    # S18: Ancestry (Universe: Total population reporting ancestry) - 114 fields (X4)
     s18_Ancestry = {
         "B04007e1": "Total population",
         "B04007e2": "Population with ancestry specified",
@@ -696,7 +696,7 @@ def getTableVars():
         "B04006e109": "Unclassified or not reported"
         }
 
-    # S19: Computers and Internet Use (Universe: Total population in households and total households)
+    # S19: Computers and Internet Use (Universe: Total population in households and total households) = 13 fields (X28)
     s19_ComputersInternet = {
         "B28008e1": "Population in households",
         "B28008e2": "Has a computer",
@@ -715,9 +715,9 @@ def getTableVars():
 
 
 
-    # E. ECONOMIC CHARACTERISTICS
+    # E. ECONOMIC CHARACTERISTICS (19 groups, 397 fields)
 
-    # E01: Employment Status (Universe: Population 16 years and over)
+    # E01: Employment Status (Universe: Population 16 years and over) - 7 fields (X23)
     e01_EmploymentStatus = {
         "B23025e1": "Population 16 years and over",
         "B23025e2": "In labor force",
@@ -728,7 +728,7 @@ def getTableVars():
         "B23025e7": "Not in labor force",
         }
 
-    # E02: Work Status by Age of workers (Universe: population 16 years and over)
+    # E02: Work Status by Age of workers (Universe: population 16 years and over) - 36 fields (X23)
     e02_WorkStatus = {
         "B23027e1": "Total population, 16 years and over",
         "B23027e2": "16 to 19 years",
@@ -768,7 +768,7 @@ def getTableVars():
         "B23027e36": "70 years and over, did not work for the past 12 months"
         }
 
-    # E03: Commuting to Work (Universe: Workers 16 years and over)
+    # E03: Commuting to Work (Universe: Workers 16 years and over) - 8 fields (X8)
     e03_Commuting = {
         "B08301e1": "Workers 16 years and over",
         "B08301e3": "Car, truck, or van - drove alone",
@@ -780,7 +780,7 @@ def getTableVars():
         "B08135e1": "Aggregate travel time to work (minutes)"
         }
 
-    # E04: Travel Time to Work (Universe: Workers 16 years and over who did not work at home)
+    # E04: Travel Time to Work (Universe: Workers 16 years and over who did not work at home) - 14 fields (X8)
     e04_TravelTimeWork = {
         "B08012e1": "Total workers 16 years and over who did not work at home",
         "B08012e2": "Less than 5 minutes",
@@ -798,7 +798,7 @@ def getTableVars():
         "B08013e1": "Aggregate time to work (in minutes)"
         }
 
-    # E05: Number of vehicles available for workers (Universe: Workers 16 years and over in households)
+    # E05: Number of vehicles available for workers (Universe: Workers 16 years and over in households) - 8 fields (X8)
     e05_VehiclesAvailableWorkers = {
         "B08014e1": "Workers 16 years and over in households",
         "B08014e2": "No vehicle available",
@@ -810,7 +810,7 @@ def getTableVars():
         "B08015e1": "Aggregate number of vehicles (car, truck or van) used in commuting"
         }
 
-    # E06: Median Age By Means of Transportation to Work (Universe: Median age, workers 16 years and over)
+    # E06: Median Age By Means of Transportation to Work (Universe: Median age, workers 16 years and over) - 7 fields (X8)
     e06_MedianAgeMeansOfTransportation = {
         "B08103e1": "Median age, total workers 16 years and over",
         "B08103e2": "Median age, using car, truck or van - drove alone",
@@ -821,7 +821,7 @@ def getTableVars():
         "B08103e7": "Median age, worked at home"
         }
 
-    # E07: Means of Transportation to Work by Race (Universe: Workers 16 years and over)
+    # E07: Means of Transportation to Work by Race (Universe: Workers 16 years and over) - 64 fields (X8)
     e07_MeansOfTransportationRace = {
         "B08301e1": "Workers, 16 years and over",
         "B08105Ae1": "White alone",
@@ -889,7 +889,7 @@ def getTableVars():
         "B08105Ie7": "Hispanic or Latino, worked at home"
         }
 
-    # E08: Occupation (Universe: Civilian employed population 16 years and over)
+    # E08: Occupation (Universe: Civilian employed population 16 years and over) - 53 fields (X24)
     e08_Occupation = {
         "C24010e1": "Civilian employed population 16 years and over",
         "C24010e2": "Male",
@@ -946,7 +946,7 @@ def getTableVars():
         "C24010e73": "Female, material moving occupations"
         }
 
-    # E09: Industry (Universe: Civilian employed population 16 years and over)
+    # E09: Industry (Universe: Civilian employed population 16 years and over) - 43 fields (X24)
     e09_Industry = {
         "C24030e1": "Civilian employed population 16 years and over",
         "C24030e2": "Male",
@@ -993,7 +993,7 @@ def getTableVars():
         "C24030e55": "Female, public administration"
         }
 
-    # E10: Class of Worker (Universe: Civilian employed population 16 years and over)
+    # E10: Class of Worker (Universe: Civilian employed population 16 years and over) - 19 fields (X24)
     e10_ClassOfWorker = {
         "B24080e1": "Civilian employed population 16 years and over",
         "B24080e2": "Male",
@@ -1016,7 +1016,7 @@ def getTableVars():
         "B24080e21": "Female, unpaid family workers"
         }
 
-    # E11: Household Income and Earnings in the past 12 months (Universe: Total households)
+    # E11: Household Income and Earnings in the past 12 months (Universe: Total households) - 37 fields (X19)
     e11_HouseholdIncomeAndEarnings = {
         "B19001e1": "Total households",
         "B19001e2": "Households, less than $10,000",
@@ -1057,7 +1057,7 @@ def getTableVars():
         "B22010e2": "Households received food stamps/SNAP income"
         }
 
-    # E12: Income and Earnings in Dollars (Universe: inflation-adjusted dollars)
+    # E12: Income and Earnings in Dollars (Universe: inflation-adjusted dollars) - 31 fields (X19, X20)
     e12_EarningsIncomeDollars = {
         "B19061e1": "Aggregate earnings in households",
         "B19062e1": "Aggregate wage or salary income in households",
@@ -1092,7 +1092,7 @@ def getTableVars():
         "B20003e6": "Aggregate earnings, female, worked full-time"
         }
 
-    # E13: Family Income in Dollars (Universe: Total families)
+    # E13: Family Income in Dollars (Universe: Total families) - 17 fields (X19)
     e13_FamilyIncome = {
         "B19101e1": "Total families",
         "B19101e2": "Families, less than $10,000",
@@ -1113,7 +1113,7 @@ def getTableVars():
         "B19101e17": "Families, $200,000 or more"
         }
 
-    # E14: Health Insurance Coverage (Universe: Civilian non-institutionalized population)
+    # E14: Health Insurance Coverage (Universe: Civilian non-institutionalized population) - 17 fields (X27)
     e14_HealthInsurance = {
         "B27010e1": "Civilian non-institutionalized population",
         "B27010e2": "Under 19 years",
@@ -1134,7 +1134,7 @@ def getTableVars():
         "B27010e66": "65 years and over, without health insurance coverage"
         }
 
-    # E15: Ratio of income to poverty level (Universe: total population for whom poverty level is determined)
+    # E15: Ratio of income to poverty level (Universe: total population for whom poverty level is determined) - 8 fields (X17)
     e15_RatioIncomePoverty = {
         "C17002e1": "Total population (for whom poverty status id determined)",
         "C17002e2": "Under 0.50",
@@ -1146,7 +1146,7 @@ def getTableVars():
         "C17002e8": "2.00 and over"
         }
 
-    # E16: Poverty in Population in the past 12 months (Universe: Total population for whom poverty level is determined)
+    # E16: Poverty in Population in the past 12 months (Universe: Total population for whom poverty level is determined) - 7 fields (X17)
     e16_BelowPovertyPopulation = {
         "B17021e1": "Total population (for whom poverty status is determined)",
         "B17021e2": "Population below poverty level",
@@ -1157,7 +1157,7 @@ def getTableVars():
         "B17021e14": "Population in nonfamily households below poverty level"
         }
 
-    # E17: Poverty in Households in the past 12 months (Universe: Total households)
+    # E17: Poverty in Households in the past 12 months (Universe: Total households) - 9 fields (X17)
     e17_BelowPovertyHouseholds = {
         "B17017e1": "Total households",
         "B17017e2": "All households below poverty level",
@@ -1170,7 +1170,7 @@ def getTableVars():
         "B17017e26": "Nonfamily households, female householder below poverty level"
         }
 
-    # E18: Percentage of families and people whose income in the past 12 months is below the poverty level (Universe: families, population)
+    # E18: Percentage of families and people whose income in the past 12 months is below the poverty level (Universe: families, population) - 8 fields (X17)
     e18_BelowPovertyFamilies = {
         "B17010e1": "All families",
         "B17010e2": "All families below poverty level",
@@ -1182,7 +1182,7 @@ def getTableVars():
         "B17010e17": "Female householder, no husband present families with related children under 18 years below poverty level"
         }
 
-    # E19: Poverty and income deficit (dollars) in the past 12 months for families (Universe: Families with income below poverty level in the past 12 months)
+    # E19: Poverty and income deficit (dollars) in the past 12 months for families (Universe: Families with income below poverty level in the past 12 months) - 4 fields (X17)
     e19_BelowPovertyIncomeDeficit = {
         "B17011e1": "Families below poverty: aggregate income deficit (past 12 months)",
         "B17011e2": "Married couple families below poverty: aggregate income deficit",
@@ -1192,16 +1192,16 @@ def getTableVars():
 
 
 
-    # H. HOUSING CHARACTERISTICS
+    # H. HOUSING CHARACTERISTICS (Total: 23 groups, 406 fields)
 
-    # H01: Housing Occupancy (Universe: Total housing units)
+    # H01: Housing Occupancy (Universe: Total housing units) - 3 fields (X25)
     h01_HousingOccupancy = {
         "B25002e1": "Total housing units",
         "B25002e2": "Occupied housing units",
         "B25002e3": "Vacant housing units"
         }
 
-    # H02: Units in Structure (Universe: Total housing units)
+    # H02: Units in Structure (Universe: Total housing units) - 11 fields (X25)
     h02_UnitsInStructure = {
         "B25024e1": "Total housing units",
         "B25024e2": "1-unit, detatched",
@@ -1216,7 +1216,7 @@ def getTableVars():
         "B25024e11": "Boat, RV, van, etc"
         }
 
-    # H03: Population in occupied housing units by tenure by units in structure (Universe: total population in occupied housing units)
+    # H03: Population in occupied housing units by tenure by units in structure (Universe: total population in occupied housing units) - 13 fields (X25)
     h03_PopulationByHousingOccupancy = {
         "B25033e1": "Total population in occupied housing units",
         "B25033e2": "Population in owner-occupied housing units",
@@ -1233,7 +1233,7 @@ def getTableVars():
         "B25033e13": "Population in renter-occupied boat, RV, van, etc"
         }
 
-    # H04: Year Structure Built (Universe: Total housing units)
+    # H04: Year Structure Built (Universe: Total housing units) - 15 fields (X25)
     h04_YearStructureBuilt = {
         "B25034e1": "Total housing units",
         "B25034e2": "Built 2014 or later",
@@ -1252,7 +1252,7 @@ def getTableVars():
         "B25037e3": "Median year structure built, renter-occupied housing units"
         }
 
-    # H05: Rooms (Universe: Total housing units)
+    # H05: Rooms (Universe: Total housing units) - 18 fields (X25)
     h05_Rooms = {
         "B25017e1": "Total housing units",
         "B25017e2": "1 room",
@@ -1274,7 +1274,7 @@ def getTableVars():
         "B25022e3": "Aggregate number of rooms in renter-occupied housing units"
         }
 
-    # H06: Bedrooms (Universe: Total housing units)
+    # H06: Bedrooms (Universe: Total housing units) - 21 fields (X25)
     h06_Bedrooms = {
         "B25041e1": "Total housing units",
         "B25041e2": "No bedroom",
@@ -1299,7 +1299,7 @@ def getTableVars():
         "B25042e15": "Renter-occupied, 5 or more bedrooms"
         }
 
-    # H07: Housing tenure by race of householder (Universe: Occupied housing units)
+    # H07: Housing tenure by race of householder (Universe: Occupied housing units) - 51 fields (X25)
     h07_HousingTenureRaceAge = {
         "B25003e1": "Occupied houging units",
         "B25003e2": "Owner-occupied",
@@ -1354,14 +1354,14 @@ def getTableVars():
         "B25010e3": "Average household size of renter-occupied houding units"
         }
 
-    # H08: Total population in occupied housing units by tenure (Universe: total population in occupied housing units)
+    # H08: Total population in occupied housing units by tenure (Universe: total population in occupied housing units) - 3 fields (X25)
     h08_PopulationTenure = {
         "B25008e1": "Total population in occupied housing units",
         "B25008e2": "Population in owner-occupied housing units",
         "B25008e3": "Population in renter-occupied housing units"
         }
 
-    # H09: Vacancy Status (Universe: vacand housing units)
+    # H09: Vacancy Status (Universe: vacand housing units) - 8 fields (X25)
     h09_VacancyStatus = {
         "B25004e1": "Total vacant housing units",
         "B25004e2": "For rent",
@@ -1373,7 +1373,7 @@ def getTableVars():
         "B25004e8": "Other vacant units"
         }
 
-    # H10: Occupied housing units by race of householder (Universe: occupied housing units)
+    # H10: Occupied housing units by race of householder (Universe: occupied housing units) - 8 fields (X25)
     h10_HouseholderRace = {
         "B25006e1": "Occupied housing units",
         "B25006e2": "Units with White alone householder",
@@ -1385,7 +1385,7 @@ def getTableVars():
         "B25006e8": "Units with two or more races householder"
         }
 
-    # H11: Year Householder Moved into Unit (Universe: Occupied housing units)
+    # H11: Year Householder Moved into Unit (Universe: Occupied housing units) - 18 fields (X25)
     h11_YearMovedIntoUnit = {
         "B25038e1": "Occupied housing units",
         "B25038e2": "Owner-occupied housing units",
@@ -1407,7 +1407,7 @@ def getTableVars():
         "B25039e3": "Median year householder moved into renter-occupied unit"
         }
 
-    # H12: Vehicles Available (Universe: Occupied housing units)
+    # H12: Vehicles Available (Universe: Occupied housing units) - 18 fields (X25)
     h12_VehiclesAvailable = {
         "B25044e1": "Occupied housing units",
         "B25044e2": "Owner-occupied housing units",
@@ -1429,7 +1429,7 @@ def getTableVars():
         "B25046e3": "Aggregate number of vehicles available in renter-occupied housing units"
         }
 
-    # H13: House Heating Fuel (Universe: Occupied housing units)
+    # H13: House Heating Fuel (Universe: Occupied housing units) - 10 fields (X25)
     h13_HouseHeatingFuel = {
         "B25040e1": "Occupied housing units",
         "B25040e2": "Utility gas",
@@ -1443,7 +1443,7 @@ def getTableVars():
         "B25040e10": "No fuel used"
         }
 
-    # H14: Selected Characteristics (Universe: Occupied housing units)
+    # H14: Selected Characteristics (Universe: Occupied housing units) - 9 fields (X25)
     h14_SelectedCharacteristics = {
         "B25016e1": "Occupied housing units",
         "B25016e2": "Onwer-occupied housing units",
@@ -1456,7 +1456,7 @@ def getTableVars():
         "B25053e7": "Renter-occupied, lacking complete kitchen facilities"
         }
 
-    # H15: Occupants Per Room (Universe: Occupied housing units)
+    # H15: Occupants Per Room (Universe: Occupied housing units) - 13 fields (X25)
     h15_OccupantsPerRoom = {
         "B25014e1": "Occupied housing units",
         "B25014e2": "Owner-occupied housing units",
@@ -1473,7 +1473,7 @@ def getTableVars():
         "B25014e13": "Renter-occupied housing units, 2.01 or more occupants per room"
         }
 
-    # H16: Housing Value (Universe: Owner-occupied units)
+    # H16: Housing Value (Universe: Owner-occupied units) - 32 fields (X25)
     h16_HousingValue = {
         "B25075e1": "Owner-occupied units",
         "B25075e2": "Less than $10,000",
@@ -1509,7 +1509,7 @@ def getTableVars():
         "B25083e1": "Median value (dollars) for mobile homes"
         }
 
-    # H17: Price asked for vacant for-sale only and sold, not occupied housing units (Universe: vacant for sale only and sold, not occupied housing units)
+    # H17: Price asked for vacant for-sale only and sold, not occupied housing units (Universe: vacant for sale only and sold, not occupied housing units) -28 fields (X25)
     h17_HousingPriceAsked = {
         "B25085e1": "Total vacant for-sale only and sold, not occupied housing units",
         "B25085e2": "Less than $10,000",
@@ -1541,7 +1541,7 @@ def getTableVars():
         "B25086e1": "Aggregate price asked (dollars)"
         }
 
-    # H18: Mortgage Status (Universe: Owner-occupied units)
+    # H18: Mortgage Status (Universe: Owner-occupied units) - 10 fields (X25)
     h18_MortgageStatus = {
         "B25081e1": "Owner-occupied units",
         "B25081e2": "Housing units with a mortgage",
@@ -1555,7 +1555,7 @@ def getTableVars():
         "B25082e3": "Aggregate value (dollars) of housing units without a mortgage"
         }
 
-    # H19: Selected Monthly Owner Costs (SMOC) (Universe: owner-occupied housing units with or without a mortgage)
+    # H19: Selected Monthly Owner Costs (SMOC) (Universe: owner-occupied housing units with or without a mortgage) - 45 fields (X25)
     h19_SMOC = {
         "B25087e1": "Total owner-occupied housing units",
         "B25087e2": "Housing units with a mortgage",
@@ -1604,7 +1604,7 @@ def getTableVars():
         "B25089e3": "Aggregate selected monthly owner costs (dollars) for units without a mortgage"
         }
 
-    # H20: Selected Monthly Owner Costs as a Percentage of Household Income (SMOCAPI) (Universe: Owner-occupied housing units with or without a mortgage)
+    # H20: Selected Monthly Owner Costs as a Percentage of Household Income (SMOCAPI) (Universe: Owner-occupied housing units with or without a mortgage) - 26 fields (X25)
     h20_SMOCAPI = {
         "B25091e1": "Owner-occupied housing units",
         "B25091e2": "Housing units with a mortgage",
@@ -1634,8 +1634,7 @@ def getTableVars():
         "B25092e3": "Median selected monthly owner costs (dollars) as percentage of household income for units without a mortgage"
         }
 
-    # H21: Contract rent distribution in dollars (Universe: renter-occupied housing units paying cash rent) and 
-    # Rent asked distribution in dollars (Universe: vacant and for-rent and rented, not occupied housing units)
+    # H21: Contract rent and rent asked distribution in dollars (Universe: renter-occupied housing units paying cash rent and vacant and for-rent, and rented, not occupied housing units) - 7 fields (X25)
     h21_RentContractAsked = {
         "B25056e2": "Renter-occupied housing units paying cash rent",
         "B25057e1": "Lower contract rent quartile",
@@ -1646,7 +1645,7 @@ def getTableVars():
         "B25062e1": "Aggregate rent asked"
         }
 
-    # H22: Gross Rent (Universe: Occupied units paying rent)
+    # H22: Gross Rent (Universe: Occupied units paying rent) - 28 fields (X25)
     h22_GrossRent = {
         "B25063e2": "Occupied units paying rent",
         "B25063e3": "Less than $500",
@@ -1678,7 +1677,7 @@ def getTableVars():
         "B25065e1": "Aggregate gross rent (dollars)"
         }
 
-    # H23: Gross Rent as Percentage of Household Income (Universe: Occupied units paying rent)
+    # H23: Gross Rent as Percentage of Household Income (Universe: Occupied units paying rent) - 11 fields (X25)
     h23_GrossRentPercentageIncome = {
         "B25070e1": "Occupied units paying rent",
         "B25070e2": "Less than 10.0 percent",
