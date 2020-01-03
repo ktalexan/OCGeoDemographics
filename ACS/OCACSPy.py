@@ -48,7 +48,7 @@ class ocacs(object):
                 self.year = yearList[0]
                 if estList.count(estList[0]) == len(estList):
                     self.est = estList[0]
-                    self.prefix = f"OC{self.prod}_{self.year}_{self.est}"
+                    self.prefix = f"OC{self.prod}{self.year}"
         
         # Compute the US Congress number based on the year of the ACS survey
         cdn = int(113 + (self.year - 2012) * 0.5)
@@ -58,37 +58,47 @@ class ocacs(object):
         self.geoNames = {}
 
         if "COUNTY" in geoList:
-            self.geoNames["COUNTY"] = "Orange County"
+            self.geoNames["CO"] = "Orange County"
         if "COUSUB" in geoList:
-            self.geoNames["COUSUB"] = "County Subdivisions"
+            self.geoNames["CS"] = "County Subdivisions"
         if "PLACE" in geoList:
-            self.geoNames["PLACE"] = "Cities/Places"
+            self.geoNames["PL"] = "Cities/Places"
         if "ZCTA" in geoList:
-            self.geoNames["ZCTA"] = "ZIP Code Tabulation Areas"
+            self.geoNames["ZC"] = "ZIP Code Tabulation Areas"
         if "CD" in geoList:
-            self.geoNames[f"CD{cdn}"] = f"Congressional Disticts, {cdn}th US Congress"
+            self.geoNames["CD"] = f"Congressional Disticts, {cdn}th US Congress"
         if "SLDL" in geoList:
-            self.geoNames[f"SLDL"] = "State Assembly Legislative Districts"
+            self.geoNames["LL"] = "State Assembly Legislative Districts"
         if "SLDU" in geoList:
-            self.geoNames[f"SLDU"] = "State Senate Legislative Districts"
+            self.geoNames["UL"] = "State Senate Legislative Districts"
         if "SDE" in geoList:
-            self.geoNames["SDE"] = "Elementary School Districts"
+            self.geoNames["ED"] = "Elementary School Districts"
         if "SDS" in geoList:
-            self.geoNames["SDS"] = "Secondary School Districts"
+            self.geoNames["SD"] = "Secondary School Districts"
         if "SDU" in geoList:
-            self.geoNames["SDU"] = "Unified School Districts"
+            self.geoNames["UD"] = "Unified School Districts"
         if "UA" in geoList:
             self.geoNames["UA"] = "Urban Areas"
         if "PUMA" in geoList:
-            self.geoNames["PUMA"] = "Public Use Microdata Areas"
+            self.geoNames["PU"] = "Public Use Microdata Areas"
         if "BG" in geoList:
             self.geoNames["BG"] = "Block Groups"
         if "TRACT" in geoList:
-            self.geoNames["TRACT"] = "Census Tracts"
+            self.geoNames["TR"] = "Census Tracts"
 
 
         # List of all the geographic code levels
         self.geoLevels = [key for key in self.geoNames.keys()]
+
+        # List of four ACS category characteristics
+        self.acsCategory = {
+            "D": "Demographic Characteristics",
+            "S": "Social Characteristics",
+            "E": "Economic Characteristics",
+            "H": "Housing Characteristics"
+            }
+
+        self.acsFeatureClasses = {}
         
         return super().__init__()
 
@@ -103,13 +113,13 @@ class ocacs(object):
         print(f"\tDefining a list of new geodatabase geographies...")
 
         # List of geodatabases to be created
-        gdbListOut = {level: f"{self.prefix}_{level}.gdb" for level in self.geoLevels}
+        gdbListOut = {level: f"{self.prefix}{level}.gdb" for level in self.acsCategory}
 
 
         # Create new geodatabases for census geographies (delete if they exist)
         print(f"\tCreating new geodatabases for ACS geographies:")
         for level, gdb in gdbListOut.items():
-            print(f"\t\tGeography: {level}")
+            print(f"\t\tCategory: {self.acsCategory[level]}")
             pathGdb = os.path.join(dataOut, gdb)
             if arcpy.Exists(pathGdb):
                 print(f"\t\t...geodatabase exists. Deleting...")

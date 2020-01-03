@@ -1,6 +1,10 @@
 import os, arcpy
 
 
+os.chdir(r"E:\Dev\Repos\OCGeoDemographics\ACS")
+
+from TableVars import *
+
 
 
 #################### DEF __INIT___ ##########################
@@ -31,123 +35,275 @@ if prodList.count(prodList[0]) == len(prodList): # check if all items in list ar
         year = int(yearList[0])
         if estList.count(estList[0]) == len(estList): # check if all estimate years are the same
             est = estList[0]
-            prefix = f"{prod}_{year}_{est}"
+            prefix = f"{prod}{year}"
 
 # Compute the US Congress number based on the year of the ACS survey:
 cdn = int(113 + (year - 2012) * 0.5)
 
+# Lookup geo-reference table
+geolookup = {
+    "COUNTY": ("CO", "Orange County"),
+    "COUSUB": ("CS", "County Subdivisions"),
+    "PLACE": ("PL", "Cities/Places"),
+    "ZCTA": ("ZC", "ZIP Code Tabulation Areas"),
+    "CD": ("CD", f"Congressional Districts of the {cdn}th US Congress"),
+    "SLDL": ("LL", "State Assembly Legislative Districts"),
+    "SLDU": ("UL", "State Senate Legislative Districts"),
+    "SDE": ("ED", "Elementary School Districts"),
+    "SDS": ("SD", "Secondary School Districts"),
+    "SDU": ("UD", "Unified School Districts"),
+    "UA": ("UA", "Urban Areas"),
+    "PUMA": ("PU", "Public Use Microdata Areas"),
+    "BG": ("BG", "Block Groups"),
+    "TRACT": ("TR", "Census Tracts")
+    }
+
 # Dictionary containing codes and aliases for each of the project's geography levels
 geoNames = {}
 if "COUNTY" in geoList:
-    geoNames["COUNTY"] = "Orange County"
+    geoNames["CO"] = "Orange County"
 if "COUSUB" in geoList:
-    geoNames["COUSUB"] = "County Subdivisions"
+    geoNames["CS"] = "County Subdivisions"
 if "PLACE" in geoList:
-    geoNames["PLACE"] = "Cities/Places"
+    geoNames["PL"] = "Cities/Places"
 if "ZCTA" in geoList:
-    geoNames["ZCTA"] = "ZIP Code Tabulation Areas"
+    geoNames["ZC"] = "ZIP Code Tabulation Areas"
 if "CD" in geoList:
-    geoNames[f"CD{cdn}"] = f"Congressional Disticts, {cdn}th US Congress"
+    geoNames["CD"] = f"Congressional Disticts, {cdn}th US Congress"
 if "SLDL" in geoList:
-    geoNames[f"SLDL"] = "State Assembly Legislative Districts"
+    geoNames["LL"] = "State Assembly Legislative Districts"
 if "SLDU" in geoList:
-    geoNames[f"SLDU"] = "State Senate Legislative Districts"
+    geoNames["UL"] = "State Senate Legislative Districts"
 if "SDE" in geoList:
-    geoNames["SDE"] = "Elementary School Districts"
+    geoNames["ED"] = "Elementary School Districts"
 if "SDS" in geoList:
-    geoNames["SDS"] = "Secondary School Districts"
+    geoNames["SD"] = "Secondary School Districts"
 if "SDU" in geoList:
-    geoNames["SDU"] = "Unified School Districts"
+    geoNames["UD"] = "Unified School Districts"
 if "UA" in geoList:
     geoNames["UA"] = "Urban Areas"
 if "PUMA" in geoList:
-    geoNames["PUMA"] = "Public Use Microdata Areas"
+    geoNames["PU"] = "Public Use Microdata Areas"
 if "BG" in geoList:
     geoNames["BG"] = "Block Groups"
 if "TRACT" in geoList:
-    geoNames["TRACT"] = "Census Tracts"
+    geoNames["TR"] = "Census Tracts"
 
 
 geoLevels = [key for key in geoNames.keys()]
 
 
+acsCategory = {
+    "D": "Demographic Characteristics",
+    "S": "Social Characteristics",
+    "E": "Economic Characteristics",
+    "H": "Housing Characteristics"
+    }
 
 
 ################## ocacsGdbStructure #####################
 
+print("\nSTEP 1: RESTRUCTURING ORIGINAL GEODATABASES")
 arcpy.env.workspace = dataIn
 arcpy.env.overwriteOutput = True
 
-gdbListOut = {level: f"{prefix}_{level}.gdb" for level in geoLevels}
+print(f"\tDefining a list of new geodatabase geographies...")
+
+# List of geodatabases to be created
+gdbListOut = {level: f"{prefix}{level}.gdb" for level in acsCategory}
 
 # Create new geodatabases for census geographies (delete if they exist)
 if os.path.exists(dataOut) is False:
     os.mkdir(dataOut)
 
+print(f"\tCreating new geodatabases for ACS geographies:")
 for level, gdb in gdbListOut.items():
+    print(f"\t\tCategory: {acsCategory[level]}")
     pathGdb = os.path.join(dataOut, gdb)
     if arcpy.Exists(pathGdb):
+        print(f"\t\t...geodatabase exists. Deleting...")
         arcpy.Delete_management(pathGdb)
+    print(f"\t\t...Creating geodatabase: {gdb}")
     arcpy.CreateFileGDB_management(dataOut, gdb)
+
+
+print(f"\nSTEP 2: CREATING BASE GEOGRAPHIES IN GEODATABASE DIRECTORY")
 
 # Changing the arcpy environment (dataOut)
 arcpy.env.workspace = dataOut
 arcpy.env.overwriteOutput = True
 
 # Starting with the COUNTY geodatabase
-print(f"\nSTEP")
+print("\tSetting up geography for County level:")
+
+# Create a temporary layer of the original County data (national)
+print("\t\tDefining workspace")
+curWorkspace = [str for str in wrkspListIn if "COUNTY" in os.path.split(str)[1]][0]
+
+print("\t\tDefining output geodatabase")
+#outGdbLyr = os.path.join(dataIn, )
+
+print("\t\tSetting ArcPy environment...")
+arcpy.env.workspace = curWorkspace
+arcpy.env.overwriteOutput = True
+
+fcIn = arcpy.ListFeatureClasses()[0]
+arcpy.MakeFeatureLayer_management(fcIn, "lyrIn")
+
+# Select only the Orange County polygon
+print("\t\tSelecting polygon for Orange County...")
+lyrOut = arcpy.SelectLayerByAttribute_management("lyrIn", "NEW_SELECTION", "GEOID = '06059'")
+
+# Place the resulting Orange County polygon into each of the category geodatabases
+print("\t\tPlacing resulting polygon into geodatabases...")
+for cat in gdbListOut.keys():
+    outGdbLyr = os.path.join(dataOut, gdbListOut[cat], f"{prefix}CO{cat}")
+    arcpy.CopyFeatures_management(lyrOut, outGdbLyr)
+
+
+# Delete the temporary layers
+print("\t\tDeleting temporary layers...")
+arcpy.Delete_management("lyrIn", "lyrOut")
+
+# Add feature class alias
+print("\t\tAdding feature class alias: {")
+for cat in gdbListOut.keys():
+    outGdbLyr = os.path.join(dataOut, gdbListOut[cat], f"{prefix}CO{cat}")
+    arcpy.AlterAliasName(outGdbLyr, f"{acsCategory[cat]} for {geoNames['CO']}")
+
+    # Create a feature layer for the new county layer - will not delete this until the end:
+    arcpy.MakeFeatureLayer_management(outGdbLyr, "lyrCounty")
+
+    # Remaining geographic levels processing
+    print("\tSetting up remaining geographies (looping):")
+    workspaceOut = os.path.join(dataOut, gdbListOut[cat])
+
+    for level, (code, alias) in geolookup.items():
+        if "COUNTY" not in level:
+            print(f"\n\t\tProcessing level {code}: {alias}")
+            curWorkspace = [str for str in wrkspListIn if level in os.path.split(str)[1]][0]
+
+            print(f"\t\t\tCurrent workspace: {curWorkspace}")
+            outGdbLyr = os.path.join(dataOut, gdbListOut[cat], f"{prefix}{code}{cat}")
+
+            print(f"\t\t\tNew geodatabase feature class: {outGdbLyr}")
+            print(f"\t\t\tSetting ArcPy environment...")
+            arcpy.env.workspace = curWorkspace
+            arcpy.env.overwriteOutput = True
+
+            fcIn = arcpy.ListFeatureClasses()[0]
+            print(f"\t\t\tFeature classes to be copied: {fcIn}")
+
+            # Create a temporary layer for the original data (national)
+            print("\t\t\tCreating temporary layer...")
+            arcpy.MakeFeatureLayer_management(fcIn, "lyrIn")
+
+            # Select features from original that are within a distance (-1000 feet) of the Orange County polygon (all are selected)
+            print("\t\t\tSelecting features within distance (1,000 feet) from County layer...")
+            lyrOut = arcpy.SelectLayerByLocation_management("lyrIn", "WITHIN_A_DISTANCE", "lyrCounty", "-1000 Feet", "NEW_SELECTION", "NOT_INVERT")
+
+            # Place the selected features into the new feature class in the project geodatabase
+            print("\t\t\tCopying selected features to the new geodatabase feature class...")
+            arcpy.CopyFeatures_management(lyrOut, outGdbLyr)
+
+            # Delete the temporary layers
+            print("\t\t\tDeleting temporary layers...")
+            arcpy.Delete_management("lyrIn", "lyrOut")
+
+            # Add feature class alias
+            print(f"\t\t\tAdding feature class alias: {alias}")
+            arcpy.AlterAliasName(outGdbLyr, f"{acsCategory[cat]} for {alias}")
+
+    # Delete county feature layer after geoprocessing operations
+    print("\n\tDeleting temporary layer for County.")
+    arcpy.Delete_management("lyrCounty")
+    
+
+tableLevels = getTableVars()
+
+tableMatch = {
+    "D": {"D01":"X01", "D02":"X01", "D03":"X02", "D04":"X02", "D05":"X03", "D06":"X05"},
+    "S": {"S01":["X11", "X25"], "S02":"X09", "S03":"X12", "S04":"X13", "S05":"X10", "S06":"X14", "S07":"X15", "S08":"X21", "S09":"X18", "S10":"X18", "S11":"X07", "S12":"X05", "S13":"X05", "S14":"X05", "S15":"X05", "S16":"X16", "S17":"X16", "S18":"X04", "S19":"X28"},
+    "E": {"E01":"X23", "E02":"X23", "E03":"X08", "E04":"X08", "E05":"X08", "E06":"X08", "E07":"X08", "E08":"X24", "E09":"X24", "E10":"X24", "E11":["X19", "X22"], "E12":["X19", "X20"], "E13":"X19", "E14":"X27", "E15":"X17", "E16":"X17", "E17":"X17", "E18":"X17", "E19":"X17"},
+    "H": {"H01":"X25", "H02":"X25", "H03":"X25", "H04":"X25", "H05":"X25", "H06":"X25", "H07":"X25", "H08":"X25", "H09":"X25", "H10":"X25", "H11":"X25", "H12":"X25", "H13":"X25", "H14":"X25", "H15":"X25", "H16":"X25", "H17":"X25", "H18":"X25", "H19":"X25", "H20":"X25", "H21":"X25", "H22":"X25", "H23":"X25"}
+    }
+
+
+for cat in gdbListOut.keys():
+    for level, (code, alias) in geolookup.items():
+        print(f"\nProcessing level {code}: {alias}")
+        curWorkspace = [str for str in wrkspListIn if level in os.path.split(str)[1]][0]
+
+        print(f"\tCurrent workspace: {curWorkspace}")
+        outGdbLyr = os.path.join(dataOut, gdbListOut[cat], f"{prefix}{code}{cat}")
+
+        print(f"\tSetting ArcPy environment...")
+        arcpy.env.workspace = curWorkspace
+        arcpy.env.overwriteOutput = True
+
+        inTables = arcpy.ListTables("X*")
+
+        for tno, table in [(t.split("_")[0], t) for t in inTables]:
+            if (table !="X00" and table !="X99"):
+
+                joinField1 = "GEOID_Data"
+                joinTable1 = 
+
+            
+
+arcpy.env.workspace = dataIn
+arcpy.env.overwriteOutput = True
+
+arcpy.List
+
+
+for key in tableLevels.keys():
+    if key.startswith("D"):
+        print(key)
 
 
 
 
+for cat in gdbListOut.keys():
+    arcpy.env.workspace = os.path.join(dataOut, gdbListOut[cat])
+    fcList = arcpy.ListFeatureClasses()
+    for key in tableLevels.keys():
+        if key.startswith(cat):
+            currentTable = tableLevels[key]
+            for group in currentTable.keys():
+                currentVar = currentTable[group]
+                t = tableMatch[cat][group]
+                if isinstance(t, str):
+                    for fc in fcList:
+                        for level in geolookup.keys():
+                            if geolookup[level][0] in fc[9:11]:
+                                inGdb = os.path.join(dataIn, [gdb for gdb in gdbListIn if level in gdb][0])
+                                arcpy.env.workspace = inGdb
+                                inTables = arcpy.ListTables("X*")
+                                j = [tname for tname in inTables if tname.split("_")[0] == t]
+                                if len(j)== 1: joinTable = j[0]
+                                arcpy.env.workspace = os.path.join(dataOut, gdbListOut[cat])
+                                joinTable1 = os.path.join(inGdb, joinTable)
+                                catfields = [key for key in currentVar.keys()]
+                                tabfields = [f.name for f in arcpy.ListFields(joinTable1)]
+                                delfields = [item for item in tabfields if item not in catfields or item == "GEOID" or item == "OBJECTID"]
+                                if cat == "D" and group == "D01":
+                                    print(delfields)
+                                joinlyr = arcpy.AddJoin_management(fc, "GEOID", joinTable1, "GEOID", "KEEP_ALL")
+                                joinlyr = arcpy.DeleteField_management(joinlyr, delfields)
 
+                                test = arcpy.ListFields(joinlyr)
+                                print(test)
 
-
-arcpy.env.workspace = r"d:\OneDrive\Professional\Projects\OCPW\OCGeodemographics\OCACS\OCACS2017\Original\ACS_2017_5YR_BG_06_CALIFORNIA.gdb"
-
-
-
-hcGR = {}
-hcGRPI = {}
-dhSA = {}
-
-with arcpy.da.SearchCursor("BG_METADATA_2017", ["Short_Name", "Full_Name"]) as cursor:
-    for row in cursor:
-        if "e" in row[0]:
-
-            if "B25063" in row[0]:
-                hcGR[row[0]] = row[1].replace(strEst, "")
-
-            if "B25070" in row[0]:
-                hcGRPI[row[0]] = row[1].replace(strEst, "")
-
-            if "B01001e1" in row[0]:
-                dhSA[row[0]] = row[1].replace(strEst, "")
-            if "B01001e2" in row[0]:
-                dhSA[row[0]] = row[1].replace(strEst,"")
-            if "B01001e26" in row[0]:
-                dhSA[row[0]] = 
-
-
-strEst = " -- (Estimate)"
-dSexAge = {}
-dRace = {}
-dRaceAloneCombination = {}
-with arcpy.da.SearchCursor("BG_METADATA_2017", ["Short_Name", "Full_Name"]) as cursor:
-    for row in cursor:
-        if "e" in row[0]:
-            if "B01001" in row[0]:
-                dSexAge[row[0]] = row[1].replace(strEst, "").replace("SEX BY AGE: ", "")
-            if "B02001" in row[0]:
-                dRace[row[0]] = row[1].replace(strEst, "").replace("RACE: ", "")
-            for var in ["B02001e1", "B02008e1", "B02009e1", "B02010e1", "B02011e1", "B02012e1", "B02013e1"]:
-                if var in row[0] and "B02001e10" not in row[0]:
-                    dRaceAloneCombination[row[0]] = row[1].replace(strEst, "")
-
-
-
-
-arcpy.CreateFileGDB_management(dataOut,"OCACS2017Y5_DH_SEXBYAGE")
-
-
-
+                elif isinstance(t, list):
+                    print("List")
+                ftables = []
+                for field, alias in currentVar.items():
+                    if f"X{field[1:3]}" not in ftables:
+                        ftables.append(f"X{field[1:3]}")
+                        for ft in ftables:
+                            joinTable = [t for t in inTables if t.split("_")[0] == ft]
+                            if len(joinTable) >0:
+                                table1 = joinTable[0]
+                                print(f"{group}: Join Table: {table1}")
+                    joinTable1 = os.path.join()

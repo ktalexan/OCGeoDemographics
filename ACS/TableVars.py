@@ -725,7 +725,7 @@ def getTableVars():
         "B23025e4": "Civilian labor force, employed",
         "B23025e5": "Civilian labor force, unemployed",
         "B23025e6": "Armed forces",
-        "B23025e7": "Not in labor force",
+        "B23025e7": "Not in labor force"
         }
 
     # E02: Work Status by Age of workers (Universe: population 16 years and over) - 36 fields (X23)
@@ -1697,7 +1697,7 @@ def getTableVars():
     # COMPILING THE MASTER DICTIONARY OF ALL THE GROUP CHARACTERISTIC FIELDS
 
     tableLevels = {
-        "Demographic": {
+        "D": {
             "D01": d01_SexAndAge,
             "D02": d02_MedianAgeSexRace,
             "D03": d03_Race,
@@ -1705,7 +1705,7 @@ def getTableVars():
             "D05": d05_HispanicOrLatinoRace,
             "D06": d06_CitizenVotingAge
             },
-        "Social": {
+        "S": {
             "S01": s01_HouseholdsType,
             "S02": s02_Relationship,
             "S03": s03_MaritalStatus,
@@ -1726,7 +1726,7 @@ def getTableVars():
             "S18": s18_Ancestry,
             "S19": s19_ComputersInternet
             },
-        "Economic": {
+        "E": {
             "E01": e01_EmploymentStatus,
             "E02": e02_WorkStatus,
             "E03": e03_Commuting,
@@ -1747,7 +1747,7 @@ def getTableVars():
             "E18": e18_BelowPovertyFamilies,
             "E19": e19_BelowPovertyIncomeDeficit
             },
-        "Housing": {
+        "H": {
             "H01": h01_HousingOccupancy,
             "H02": h02_UnitsInStructure,
             "H03": h03_PopulationByHousingOccupancy,
