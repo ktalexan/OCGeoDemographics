@@ -90,6 +90,7 @@ class ocacs(object):
         # List of all the geographic code levels
         self.geoLevels = [key for key in self.geoNames.keys()]
 
+
         # List of four ACS category characteristics
         self.acsCategory = {
             "D": "Demographic Characteristics",
@@ -117,6 +118,10 @@ class ocacs(object):
 
 
         # Create new geodatabases for census geographies (delete if they exist)
+
+        if os.path.exists(self.dataOut) is False:
+            os.mkdir(self.dataOut)
+
         print(f"\tCreating new geodatabases for ACS geographies:")
         for level, gdb in gdbListOut.items():
             print(f"\t\tCategory: {self.acsCategory[level]}")
@@ -131,9 +136,53 @@ class ocacs(object):
 
         print(f"\nSTEP 2: CREATING BASE GEOGRAPHIES IN GEODATABASE DIRECTORY")
 
+        # Changing the arcpy environment (dataOut)
+        arcpy.env.workspace = self.dataOut
+        arcpy.env.overwriteOutput = True
+
         # Starting with the COUNTY geodatabase
         print("\tSetting up geography for County level:")
 
-        # Create a temporary layer of the original County data (national)
+        # Create a temporary layer for the original County data (national)
         print("\t\tDefining workspace")
-        curWorkspace = self.wrkspListIn["COUNTY"]
+        curWorkspace = [str for str in self.wrkspListIn if "COUNTY" in os.path.split(str)[1]][0]
+
+        print("\t\tSetting up arcpy environment...")
+        arcpy.env.workspace = curWorkspace
+        arcpy.env.overwriteOutput = True
+
+        fcIn = arcpy.ListFeatureClasses()[0]
+        arcpy.MakeFeatureLayer_management(fcIn, "lyrIn")
+
+        # Select only the Orange County polygon
+        print("\t\tSelecting polygon for Orange County...")
+        lyrOut = arcpy.SelectLayerByAttribute_management("lyrIn", "NEW_SELECTION", "GEOID = '06059'")
+
+        # Place the resulting Orange County polygon into each of the category geodatabases
+        print("\t\tPlacing resulting polygon into geodatabases...")
+        for cat in self.gdbListOut.keys():
+            outGdbLyr = os.path.join(dataOut, self.gdbListOut[cat], f"{self.prefix}CO{cat}")
+            arcpy.CopyFeatures_management(lyrOut, outGdbLyr)
+
+        # Delete the temporary layers
+        print("\t\tDeleting temporary layers...")
+        arcpy.Delete_management("lyrIn", "lyrOut")
+
+        # Add feature class alias
+        print("\t\tAdding feature class alias: ")
+        for cat in self.gdbListOut.keys():
+            outGdbLyr = os.path.join(self.dataOut, self.gdbListOut[cat], f"{self.prefix}CO{cat}")
+            arcpy.AlterAliasName(self.outGdbLyr, f"{self.acsCategory[cat]} for {self.geoNames['CO']}")
+
+            # Create a feature layer for the new County laeyrs - will not delete this until the end:
+            arcpy.MakeFeaturLayer_management(self.outGdbLyr, "lyrCounty")
+
+            # Remaining geographic levels processing
+            print("\tSetting up remaining geographices (looping):")
+            workspaceOut = os.path.join(self.dataOut, self.gdbListOut[cat])
+
+            for level (code, alias) in self.geolookup.items():
+                if "COUNTY" not in level:
+                    print(f"\n\t\tProcessing level {code}: {alias}")
+                    curWorkspace = [str for str in self.wrkspListIn if level in os.path.split(str)[1]][0]
+

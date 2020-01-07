@@ -229,81 +229,60 @@ tableMatch = {
     }
 
 
+
+
 for cat in gdbListOut.keys():
+    dlist = tableMatch[cat]
     for level, (code, alias) in geolookup.items():
         print(f"\nProcessing level {code}: {alias}")
-        curWorkspace = [str for str in wrkspListIn if level in os.path.split(str)[1]][0]
+        inWorkspace = [str for str in wrkspListIn if level in os.path.split(str)[1]][0]
+        outWorkspace = os.path.join(dataOut, gdbListOut[cat])
+        fc = os.path.join(f"{prefix}{code}{cat}")
+        joinField1 = "GEOID_Data"
+        joinField2 = "GEOID"
 
-        print(f"\tCurrent workspace: {curWorkspace}")
-        outGdbLyr = os.path.join(dataOut, gdbListOut[cat], f"{prefix}{code}{cat}")
-
-        print(f"\tSetting ArcPy environment...")
-        arcpy.env.workspace = curWorkspace
+        print("\tSetting arcpy environment to input...")
+        arcpy.env.workspace = inWorkspace
         arcpy.env.overwriteOutput = True
 
+
+        print("\tObtaining original list of tables...")
         inTables = arcpy.ListTables("X*")
 
-        for tno, table in [(t.split("_")[0], t) for t in inTables]:
-            if (table !="X00" and table !="X99"):
+        print("\tChanging arcpy environment to output...")
+        arcpy.env.workspace = outWorkspace
+        arcpy.env.overwriteOutput = True
 
-                joinField1 = "GEOID_Data"
-                joinTable1 = 
+        for dno, tno in dlist.items():
+            print(f"\n\tProcessing group {dno} for table(s) {tno}")
 
-            
+            if isinstance(tno, str):
+                for tname in inTables:
+                    if tno in tname:
+                        inTable = tname
+                        joinTable = os.path.join(inWorkspace, inTable)
+                        levelfields = [key for key in tableLevels[cat][dno].keys()]
+                        arcpy.JoinField_management(fc, joinField1, joinTable, joinField2, levelfields)
+                        print("\t...Adding aliases to feature class")
+                    aliases = [alias for alias in tableLevels[cat][dno].items()]
+                    for field, alias in aliases:
+                        newfield = f"{dno}{field}"
+                        print(f"\t\t...adding alias {dno}: {alias}")
+                        arcpy.AlterField_management(fc, field, newfield, f"{dno}: {alias}")
 
-arcpy.env.workspace = dataIn
-arcpy.env.overwriteOutput = True
+            elif isinstance(tno, list):
+                for t in tno:
+                    for tname in inTables:
+                        if t in tname:
+                            inTable = tname
+                            joinTable = os.path.join(inWorkspace, inTable)
+                            levelfields = [key for key in tableLevels[cat][dno].keys() if key[1:3] == t[1:3]]
+                            arcpy.JoinField_management(fc, joinField1, joinTable, joinField2, levelfields)                    
+                    print("\t...Adding aliases to feature class")
+                    aliases = [alias for alias in tableLevels[cat][dno].items()]
+                    for field, alias in aliases:
+                        newfield = f"{dno}{field}"
+                        print(f"\t\t...adding alias {dno}: {alias}")
+                        arcpy.AlterField_management(fc, field, newfield, f"{dno}: {alias}")
 
-arcpy.List
 
-
-for key in tableLevels.keys():
-    if key.startswith("D"):
-        print(key)
-
-
-
-
-for cat in gdbListOut.keys():
-    arcpy.env.workspace = os.path.join(dataOut, gdbListOut[cat])
-    fcList = arcpy.ListFeatureClasses()
-    for key in tableLevels.keys():
-        if key.startswith(cat):
-            currentTable = tableLevels[key]
-            for group in currentTable.keys():
-                currentVar = currentTable[group]
-                t = tableMatch[cat][group]
-                if isinstance(t, str):
-                    for fc in fcList:
-                        for level in geolookup.keys():
-                            if geolookup[level][0] in fc[9:11]:
-                                inGdb = os.path.join(dataIn, [gdb for gdb in gdbListIn if level in gdb][0])
-                                arcpy.env.workspace = inGdb
-                                inTables = arcpy.ListTables("X*")
-                                j = [tname for tname in inTables if tname.split("_")[0] == t]
-                                if len(j)== 1: joinTable = j[0]
-                                arcpy.env.workspace = os.path.join(dataOut, gdbListOut[cat])
-                                joinTable1 = os.path.join(inGdb, joinTable)
-                                catfields = [key for key in currentVar.keys()]
-                                tabfields = [f.name for f in arcpy.ListFields(joinTable1)]
-                                delfields = [item for item in tabfields if item not in catfields or item == "GEOID" or item == "OBJECTID"]
-                                if cat == "D" and group == "D01":
-                                    print(delfields)
-                                joinlyr = arcpy.AddJoin_management(fc, "GEOID", joinTable1, "GEOID", "KEEP_ALL")
-                                joinlyr = arcpy.DeleteField_management(joinlyr, delfields)
-
-                                test = arcpy.ListFields(joinlyr)
-                                print(test)
-
-                elif isinstance(t, list):
-                    print("List")
-                ftables = []
-                for field, alias in currentVar.items():
-                    if f"X{field[1:3]}" not in ftables:
-                        ftables.append(f"X{field[1:3]}")
-                        for ft in ftables:
-                            joinTable = [t for t in inTables if t.split("_")[0] == ft]
-                            if len(joinTable) >0:
-                                table1 = joinTable[0]
-                                print(f"{group}: Join Table: {table1}")
-                    joinTable1 = os.path.join()
