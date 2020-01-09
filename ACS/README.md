@@ -19,26 +19,6 @@ The original data are downloaded from the US Census TIGER/Line dataset with link
 The dataset incude 14 separate geographies, and 25 data tables per geography in each geodatabase. Specifically, the included geographies are:
 
 
-|Category|Level|Abbrev|Description|
-|:---|:---|:---:|:---|
-|Administrative|County|CO|County of Orange|
-|^|County Subdivisions|CS|Orange County Subdivisions|
-|^|Cities/Places|PL|Orange Couny Cities|
-|^|ZIP Codes|ZC|ZIP Code Tabulation Areas for Orange County|
-|Political|Congressional Districts|CD|Congressional Districts, 113th-116th US Congress for Orange County|
-|^|State Assembly|LL|State Assembly Legislative Districts (Lower) for Orange County|
-|^|State Senate|UL|State Senate Legislative Districts (Upper) for Orange County|
-|Education|Elementary|ED|Elementary School Districts for Orange County|
-|^|Secondary|SD|Secondary School Districts for Orange County|
-|^|Unified|UD|Unified School Districts for Orange County|
-|Census|Urban Areas|UA|Urban Areas for Orange and Los Angeles Counties|
-|^|Public Use Microdata Areas|PU|Census Public Use Microdata Areas (PUMA) for Orange County|
-|^|Block Groups|BG|Census Block Groups for Orange County|
-|^|Census Tracts|TR|Census Tracts for Orange County|
-
-<br><br>
-
-
 
 <table>
     <thead>
@@ -112,7 +92,7 @@ The dataset incude 14 separate geographies, and 25 data tables per geography in 
         <tr>
             <td>Public Use Microdata Areas</td>
             <td>PU</td>
-            <td>Census Public Use Microdata Areas for Orange County</td>
+            <td>Census Public Use Microdata Areas (PUMA) for Orange County</td>
         </tr>
         <tr>
             <td>Block Groups</td>
@@ -146,7 +126,7 @@ Each of the geographies is represented by a separate geodatabase structure. With
 
 A more detailed description of each sub-group within each of the four feature classes representing the ACS table characteristics is provided below. The table's columns represent: the subgroup's code; its descriptive name;the universe (summative) level of the reference; the ACS cenus table in which the original fields are located; the fields/variables of the data, and; how many fields are included in the subgroup.
 
-<br>
+<br><br>
 
 #### D: Demographic Characteristics (6 groups, 105 fields)
 
