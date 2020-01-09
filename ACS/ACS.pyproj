@@ -31,10 +31,7 @@
     <Compile Include="scratch.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="TableVars.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TableVars1.py">
+    <Compile Include="WriteToExcel.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

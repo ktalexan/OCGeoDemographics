@@ -235,7 +235,7 @@ The economic characteristics selected for spatial representation can be found in
 Code|Name|Universe|Table|Fields|Count
 ---|---|---|---|---|---:
 E01|Employment status|population 16 years and over|X23|B23025|7
-E02|Work status by age of worker|population 16 years and over|x23|B23027|36
+E02|Work status by age of worker|population 16 years and over|X23|B23027|36
 E03|Commuting to work|workers 16 years and over|X8|B08301, B08135|8
 E04|Travel time to work|workers 16 years and over who did not work at home|X8|B08012-13|14
 E05|Number of vehicles available for workers|workers 16 years and over in households|X8|B08014-15|8
@@ -415,30 +415,26 @@ Census Tracts (TR)|TRD|TRS|TRE|TRH
 
 <h5>COD: County Demographic Characteristics</h5>
 
-
-Name|ACS2017Y5_BG_Demographics
+Name|Orange County ACS 2017 (5-year estimates): County Level Demographic Characteristics (ACS2017COD)
 :---|:---
-Tags|geodemographics; Orange County; California; US Census; ACS; American Community Survey; demographics; block groups; age and sex
-Summary|Age and Sex characteristics by Census Block Groups of the 2017 American Community Survey (ACS), 5-year estimates for Orange County, California. The purpose of the dataset is to assist spatial visualization and analysis of basic demographic statistical information in the county. Universe: Total population.
-Description | US Census American Community Survey (ACS) 2017, 5-year estimates of the key Age and Sex demographic characteristics for Orange County, California. The layer contains demographic data for table X01: Age and Sex of the ACS 2017 (5-year) dataset for Block Groups in Orange County, fields B01002 (Universe: Total population). The US Census geodemographic data are based on the 2017 TigerLines across multiple census geographies. The spatial geographies were merged with ACS demographic data tables.
-Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov) for the X01: Age and Sex Tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial Services, Dr. Kostas Alexandridis, GISP, on December 2019.
-
-
-
+Tags|geodemographics; Orange County; California; US Census; ACS; American Community Survey; demographics; age and sex; median age; race; Hispanic or Latino; voting age
+Summary|Key demographic characteristics of the 2017 American Community Survey (ACS), 5-year estimates for Orange County, California. The purpose of the dataset is to assist spatial visualization and analysis of basic demographic statistical information in the county. Universe: Total population.
+Description | US Census American Community Survey (ACS) 2017, 5-year estimates of the key demographic characteristics for Orange County, California. The layer contains demographic data for tables X01, X02, X03 and X05 of the ACS 2017 (5-year) dataset for Orange County. The US Census geodemographic data are based on the 2017 TigerLines across multiple census geographies. The spatial geographies were merged with ACS demographic data tables. The selected fields contain six table groups: D01 - Sex and age (universe: total population, 49 fields, table X01); D02 - Median age by sex and race (universe: total population, 12 fields, table X1); D03 - Race (universe: total population, 8 fields, table X2); D04 - Race alone or in combination with one or more other races (universe: total population, 7 fields, table X2); D05 - Hispanic or Latino and race (universe: total population, 21 fields, X3); D06 - Citizen voting age population (universe: citizen, 18 years and over population, 8 fields, table X5).
+Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov) for the selected tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial Services, Dr. Kostas Alexandridis, GISP, on December 2019.
 
 <br>
 <h5>COS: County Social Characteristics</h5>
 
-
-Name|ACS2017_BG_D02
+Name|Orange County ACS 2017 (5-year estimates): County Level Social Characteristics (ACS2017COD)
 :---|:---
-Tags|geodemographics; Orange County; California; US Census; ACS; American Community Survey; demographics; block groups; sex; race; median age
-Summary|Median age by sex and race characteristics by Census Block Groups of the 2017 American Community Survey (ACS), 5-year estimates for Orange County, California. The purpose of the dataset is to assist spatial visualization and analysis of basic demographic statistical information in the county. Universe: Total population.
-Description | US Census American Community Survey (ACS) 2017, 5-year estimates of the key Age and Sex demographic characteristics for Orange County, California. The layer contains demographic data for table X01: Age and Sex of the ACS 2017 (5-year) dataset for Block Groups in Orange County, fields B01002 (Universe: Total population). The US Census geodemographic data are based on the 2017 TigerLines across multiple census geographies. The spatial geographies were merged with ACS demographic data tables.
-Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov) for the X01: Age and Sex Tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial Services, Dr. Kostas Alexandridis, GISP, on December 2019.
+Tags|geodemographics; Orange County; California; US Census; ACS; American Community Survey; social characteristics; households; 
+Summary|Key demographic characteristics of the 2017 American Community Survey (ACS), 5-year estimates for Orange County, California. The purpose of the dataset is to assist spatial visualization and analysis of basic demographic statistical information in the county. Universe: Total population.
+Description | US Census American Community Survey (ACS) 2017, 5-year estimates of the key demographic characteristics for Orange County, California. The layer contains demographic data for tables X01, X02, X03 and X05 of the ACS 2017 (5-year) dataset for Orange County. The US Census geodemographic data are based on the 2017 TigerLines across multiple census geographies. The spatial geographies were merged with ACS demographic data tables. The selected fields contain six table groups: D01 - Sex and age (universe: total population, 49 fields, table X01); D02 - Median age by sex and race (universe: total population, 12 fields, table X1); D03 - Race (universe: total population, 8 fields, table X2); D04 - Race alone or in combination with one or more other races (universe: total population, 7 fields, table X2); D05 - Hispanic or Latino and race (universe: total population, 21 fields, X3); D06 - Citizen voting age population (universe: citizen, 18 years and over population, 8 fields, table X5).
+Terms of Use | Original datasets from US Census [TigerLine Geography](https://www.census.gov/geo/maps-data/data/tiger-line.html), and [American FactFinder](https://factfinder.census.gov) for the selected tables of the American Community Survey (ACS, 2017). Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey/Geospatial Services, Dr. Kostas Alexandridis, GISP, on December 2019.
 
 <br>
 <h5>COE: County Economic Characteristics</h5>
+
 
 <br>
 <h5>COH: County Housing Characteristics</h5>
