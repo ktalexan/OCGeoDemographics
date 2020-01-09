@@ -226,12 +226,76 @@ def ocacs(prjPath):
     # Get the table variables
     tableLevels = getTableVars()
 
-    # Dictionary containing the ACS Census tables for each of the variable groups
-    tableMatch = {
-        "D": {"D01":"X01", "D02":"X01", "D03":"X02", "D04":"X02", "D05":"X03", "D06":"X05"},
-        "S": {"S01":["X11", "X25"], "S02":"X09", "S03":"X12", "S04":"X13", "S05":"X10", "S06":"X14", "S07":"X15", "S08":"X21", "S09":"X18", "S10":"X18", "S11":"X07", "S12":"X05", "S13":"X05", "S14":"X05", "S15":"X05", "S16":"X16", "S17":"X16", "S18":"X04", "S19":"X28"},
-        "E": {"E01":"X23", "E02":"X23", "E03":"X08", "E04":"X08", "E05":"X08", "E06":"X08", "E07":"X08", "E08":"X24", "E09":"X24", "E10":"X24", "E11":["X19", "X22"], "E12":["X19", "X20"], "E13":"X19", "E14":"X27", "E15":"X17", "E16":"X17", "E17":"X17", "E18":"X17", "E19":"X17"},
-        "H": {"H01":"X25", "H02":"X25", "H03":"X25", "H04":"X25", "H05":"X25", "H06":"X25", "H07":"X25", "H08":"X25", "H09":"X25", "H10":"X25", "H11":"X25", "H12":"X25", "H13":"X25", "H14":"X25", "H15":"X25", "H16":"X25", "H17":"X25", "H18":"X25", "H19":"X25", "H20":"X25", "H21":"X25", "H22":"X25", "H23":"X25"}
+
+    # Dictionary containing the group variable descriptions
+    groupMatch = {
+        "D01": "Sex and age (universe: total population)",
+        "D02": "Median age by sex and race (universe: total population)",
+        "D03": "Race (universe: total population)",
+        "D04": "Race alone or in combination with one or more other races (universe: total population)",
+        "D05": "Hispanic or Latino and race (universe: total population)",
+        "D06": "Citizen voting age population (universe: citizen, 18 and over)",
+        "S01": "Households by type (universe: total households)",
+        "S02": "Relationship (universe: population in households)",
+        "S03": "Marital status (universe: population 15 years and over)",
+        "S04": "Fertility (universe: women 15 to 50 years who had birth in the past 12 months)",
+        "S05": "Grandparents (universe: grandparents living or responsible for own grandchildren under 18 years)",
+        "S06": "School enrollment (universe: population 3 years old and over enrolled in school)",
+        "S07": "Educational attainment (universe: population 25 years and over)",
+        "S08": "Veteran status (universe: civilian population 18 years and over)",
+        "S09": "Disability status and type by sex and age (universe: total civilian non-institutionalized population)",
+        "S10": "Disability status by age and health insurance coverage (universe: civilian non-institutionalized population)",
+        "S11": "Residence 1 year ago (universe: population 1 year and over)",
+        "S12": "Place of birth (universe: total population)",
+        "S13": "Citizenship status by nativity in the US (universe: total population)",
+        "S14": "Year of entry (universe: population born outside the US)",
+        "S15": "World region of birth of foreign born population (universe: foreign born population, excluding population born at sea",
+        "S16": "Language spoken in households (universe: total households)",
+        "S17": "Language spoken at home (universe: population 5 years and over)",
+        "S18": "Ancestry (universe: total population reporting ancestry)",
+        "S19": "Computers and internet use (universe: total population in households and total households)",
+        "E01": "Employment status (universe: population 16 years and over)",
+        "E02": "Work status by age of worker (universe: population 16 years and over)",
+        "E03": "Commuting to work (universe: workers 16 years and over)",
+        "E04": "Travel time to work (universe: workers 16 years and over who did not work at home)",
+        "E05": "Number of vehicles available for workers (universe: workers 16 years and over in households)",
+        "E06": "Median age by means of transportation to work (universe: median age, workers 16 years and over)",
+        "E07": "Means of transportation to work by race (universe: workers 16 years and over)",
+        "E08": "Occupation (universe: civilian employed population 16 years and over)",
+        "E09": "Industry (universe: civilian employed population 16 years and over)",
+        "E10": "Class of worker (universe: civilian employed population 16 years and over)",
+        "E11": "Household income and earnings in the past 12 months (universe: total households)",
+        "E12": "Income and earnings in dollars (universe: inflation-adjusted dollars)",
+        "E13": "Family income in dollars (universe: total families)",
+        "E14": "Health insurance coverage (universe: civilian non-institutionalized population)",
+        "E15": "Ratio of income to poverty level (universe: total population for whom poverty level is determined)",
+        "E16": "Poverty in population in the past 12 months (universe: total population for whom poverty is determined)",
+        "E17": "Poverty in households in the past 12 months (universe: total households)",
+        "E18": "Percentage of families and people whose income in the past 12 months is below the poverty level (universe: families, population)",
+        "E19": "Poverty and income deficit in dollars in the past 12 months for families (universe: families with income below poverty level in the past 12 months)",
+        "H01": "Housing occupancy (universe: total housing units)",
+        "H02": "Units in structure (universe: total housing units)",
+        "H03": "Population in occupied housing units by tenure by units in structure (universe: total population in occupied housing units",
+        "H04": "Year structure built (universe: total housing units)",
+        "H05": "Rooms (universe: total housing units)",
+        "H06": "Bedrooms (universe: total housing units)",
+        "H07": "Housing tenure by race of householder (universe: occupied housing units)",
+        "H08": "Total population in occupied housing units by tenure (universe: total population in occupied housing units)",
+        "H09": "Vacancy status (universe: vacant housing units)",
+        "H10": "Occupied housing units by race of householder (universe: occupied housing units)",
+        "H11": "Year householder moved into unit (universe: occupied housing units)",
+        "H12": "Vehicles available (universe: occupied housing units)",
+        "H13": "House heating fuel (universe: occupied housing units)",
+        "H14": "Selected housing characteristics (universe: occupied housing units)",
+        "H15": "Occupants per room (universe: occupied housing units)",
+        "H16": "Housing value (universe: owner-occupied units)",
+        "H17": "Price asked for vacant for-sale only, and sold, not occupied housing units (universe: vacant for sale only, and sold not occupied housing units)",
+        "H18": "Mortgage status (universe: owner-occupied units)",
+        "H19": "Selected monthly owner costs, SMOC (universe: owner-occupied housing units with or without a mortgage)",
+        "H20": "Selected monthly owner costs as a percentage of household income, SMOCAPI (universe: owner-occupied housing units with or without a mortgage)",
+        "H21": "Contract rent distribution and rent asked distribution in dollars (universe: renter-occupied housing units paying cash rent and vacant for rent, and rented not occupied housing units)",
+        "H22": "Gross rent (universe: occupied units paying rent)",
+        "H23": "Gross rent as percentage of household income (universe: occupied units paying rent)"
         }
 
 
@@ -241,6 +305,19 @@ def ocacs(prjPath):
 
     # Create a new excel workbook
     wb = Workbook(os.path.join(dataOut, f"{prefix}.xlsx"))
+    metasheet = wb.add_worksheet("Metadata")
+
+    # Excel headers for the metasheet
+    metasheet.write(0, 0, "Group")
+    metasheet.write(0, 1, "Name")
+    metasheet.write(0, 2, "Tags")
+    metasheet.write(0, 3, "Summary")
+    metasheet.write(0, 4, "Description")
+    metasheet.write(0, 5, "Terms of use")
+
+    # start a row count for the metadata
+    xlmeta = 1
+
 
     # For each category
     for cat in gdbListOut.keys():
@@ -257,11 +334,12 @@ def ocacs(prjPath):
         xlsheet.write(0, 3, "Code")
         xlsheet.write(0, 4, "Geography")
         xlsheet.write(0, 5, "Group")
-        xlsheet.write(0, 6, "Table")
-        xlsheet.write(0, 7, "Field")
-        xlsheet.write(0, 8, "Alias")
-        xlsheet.write(0, 9, "Count")
-        xlsheet.write(0, 10, "Group Sum")
+        xlsheet.write(0, 6, "Group Description")
+        xlsheet.write(0, 7, "Table")
+        xlsheet.write(0, 8, "Field")
+        xlsheet.write(0, 9, "Alias")
+        xlsheet.write(0, 10, "Count")
+        xlsheet.write(0, 11, "Group Sum")
         
         # Loop through each of the geographies
         for geolevel, (geocode, geoalias) in geolookup.items():
@@ -292,6 +370,21 @@ def ocacs(prjPath):
             # Get the variables for the feature class
             fcgroups = [key for key in tableLevels[cat].keys()]
             for group in fcgroups:
+
+                # Write group variable metadata
+                mname = f"Orange County ACS {prefix[-4:]} (5-year estimates): {geoalias} Level {acsCategory[cat]} ({prefix}{geocode}{cat})"
+                mtags = f"geodemographics, Orange County, California, US Census, ACS, American Community Survey, {acsCategory[cat]}, {geoalias}"
+                msummary = f"Key {acsCategory[cat].lower()} of the {prefix[-4:]} American Community Survey (ACS), 5-year estimates for the {geoalias} geography level in Orange County, California. The dataset contains the group {group}: {groupMatch[group]}."
+                mdescription = f"US Census American Community Survey (ACS) {prefix[-4:]}, 5-year estimates of the key {acsCategory[cat].lower()} of the {geoalias} geographic level for Orange County, California. The data contains the variable group {group}: {groupMatch[group]}. The US Census geodemographic data are based on the {prefix[-4:]} TigerLines across multiple geographies. The spatial geographies were merged with ACS data tables."
+                mterms = f"Original datasets from US Census TigerLine Geography, and American FactFinder for the selected tables of the American Community Survey (ACS, {prefix[-4:]}. Linking and merging geographic with demographic tables along with final production of the merged spatial geodatabase and online datasets are performed by Orange County Public Works, OC Survey Geospatial Services, Dr. Kostas Alexandridis, GISP."
+                metasheet.write(xlmeta, 0, group)
+                metasheet.write(xlmeta, 1, mname)
+                metasheet.write(xlmeta, 2, mtags)
+                metasheet.write(xlmeta, 3, msummary)
+                metasheet.write(xlmeta, 4, mdescription)
+                metasheet.write(xlmeta, 5, mterms)
+                xlmeta += 1
+
                 fcfields = [field for field in tableLevels[cat][group]]
                 for count, field in enumerate(fcfields, start=1):
                     for table in inTables:
@@ -312,11 +405,12 @@ def ocacs(prjPath):
                                 xlsheet.write(xlrow, 3, geocode)
                                 xlsheet.write(xlrow, 4, geoalias)
                                 xlsheet.write(xlrow, 5, group)
-                                xlsheet.write(xlrow, 6, inTable)
-                                xlsheet.write(xlrow, 7, f"{group}{field}")
-                                xlsheet.write(xlrow, 8, f"{group}: {alias}")
-                                xlsheet.write(xlrow, 9, count)
-                                xlsheet.write(xlrow, 10, len(fcfields))
+                                xlsheet.write(xlrow, 6, groupMatch[group])
+                                xlsheet.write(xlrow, 7, inTable)
+                                xlsheet.write(xlrow, 8, f"{group}{field}")
+                                xlsheet.write(xlrow, 9, f"{group}: {alias}")
+                                xlsheet.write(xlrow, 10, count)
+                                xlsheet.write(xlrow, 11, len(fcfields))
                                 xlrow += 1
 
     wb.close()
