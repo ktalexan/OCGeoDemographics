@@ -11,6 +11,9 @@ prjPathList = [os.path.join(basepath, folderpath, f"OCACS{year}") for year in ye
 
 ocacs(prjPathList[0])
 
+ocacs(prjPathList[2])
+ocacs(prjPathList[3])
+
 
 for prjPath in prjPathList:
     print(f"\n\nPROCESSING YEAR: {prjPath[-4:]}\n")
