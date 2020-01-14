@@ -10,21 +10,18 @@ folderpath = r"Professional\Projects\OCPW\OCGeodemographics\OCACS"
 years = ['2017', '2016', '2015', '2014', '2013']
 
 prjPathList = [os.path.join(basepath, folderpath, f"OCACS{year}") for year in years]
+#prjPath = prjPathList[0]
 
 ocacs(prjPathList[0])
-ocacs(prjPathList[1])
-
-ocacs(prjPathList[4])
-
-ocacs(prjPathList[2])
-ocacs(prjPathList[3])
+#ocacs(prjPathList[1])
+#ocacs(prjPathList[2])
+#ocacs(prjPathList[3])
+#ocacs(prjPathList[4])
 
 
-for prjPath in prjPathList:
-    print(f"\n\nPROCESSING YEAR: {prjPath[-4:]}\n")
-    ocacs(prjPath)
-
-
+#for prjPath in prjPathList:
+#    print(f"\n\nPROCESSING YEAR: {prjPath[-4:]}\n")
+#    ocacs(prjPath)
 
 
 

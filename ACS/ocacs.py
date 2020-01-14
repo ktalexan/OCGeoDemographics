@@ -193,16 +193,13 @@ def ocacs(prjPath):
                 arcpy.env.workspace = curWorkspace
                 arcpy.env.overwriteOutput = True
 
+                countyIn = os.path.join(dataOut, gdbListOut[cat], f"{prefix}CO{cat}")
                 fcIn = arcpy.ListFeatureClasses()[0]
                 print(f"\t\t\tFeature classes to be copied: {fcIn}")
 
-                # Create a temporary layer for the original data (national)
-                print("\t\t\tCreating temporary layer...")
-                arcpy.MakeFeatureLayer_management(fcIn, "lyrIn")
-
                 # Select features from original that are within a distance (-1000 feet) of the Orange County polygon (all are selected)
                 print("\t\t\tSelecting features with distance (1,000 feet) from County layer...")
-                lyrOut = arcpy.SelectLayerByLocation_management("lyrIn", "WITHIN_A_DISTANCE", "lyrCounty", "-1000 Feet", "NEW_SELECTION", "NOT_INVERT")
+                lyrOut = arcpy.SelectLayerByLocation_management(fcIn, "WITHIN_A_DISTANCE", countyIn, "-1000 Feet", "NEW_SELECTION", "NOT_INVERT")
 
                 # Place the selected features into the new feature class in the project geodatabase
                 print("\t\t\tCopying selected features to the new geodatabase feature class...")
@@ -210,7 +207,7 @@ def ocacs(prjPath):
 
                 # Delete the temporary layers
                 print("\t\t\tDeleting temporary layers...")
-                arcpy.Delete_management("lyrIn", "lyrOut")
+                arcpy.Delete_management("lyrOut")
 
                 # Add feature class alias
                 print(f"\t\t\tAdding feature class alias {alias}")
