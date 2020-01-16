@@ -1,21 +1,21 @@
 import os, arcpy
 
-os.chdir(r"E:\Dev\Repos\OCGeoDemographics\ACS")
-#os.chdir(r"F:\Dev\Repos\OCGeoDemographics\ACS")
+#os.chdir(r"E:\Dev\Repos\OCGeoDemographics\ACS")
+os.chdir(r"F:\Dev\Repos\OCGeoDemographics\ACS")
 from ocacs import ocacs
 
-basepath = r"D:\OneDrive"
-#basepath = os.environ["OneDriveConsumer"]
+#basepath = r"D:\OneDrive"
+basepath = os.environ["OneDriveConsumer"]
 folderpath = r"Professional\Projects\OCPW\OCGeodemographics\OCACS"
 years = ['2017', '2016', '2015', '2014', '2013']
 
 prjPathList = [os.path.join(basepath, folderpath, f"OCACS{year}") for year in years]
 #prjPath = prjPathList[0]
 
-ocacs(prjPathList[0])
-#ocacs(prjPathList[1])
+#ocacs(prjPathList[0])
+ocacs(prjPathList[1])
 #ocacs(prjPathList[2])
-#ocacs(prjPathList[3])
+ocacs(prjPathList[3])
 #ocacs(prjPathList[4])
 
 
