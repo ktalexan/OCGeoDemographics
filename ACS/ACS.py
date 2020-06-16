@@ -1,17 +1,23 @@
 import os, arcpy
 
-year = 2017
+#year = 2017
+#est = 5
+year = 2018
 est = 5
 
+
 prefix = f"ACS{year}Y{est}"
-prjDir = r"E:\Dev\Repos\OCGeoDemographics\ACS"
-dataOrigin = r"E:\ACS2017"
+#prjDir = r"E:\Dev\Repos\OCGeoDemographics\ACS"
+prjDir = r"C:\Users\ktale\Source\Repos\ktalexan\OCGeoDemographics\ACS"
+#dataOrigin = r"E:\ACS2017"
+dataOrigin = r"D:\OneDrive - County of Orange\Projects\OCGeodemographics\OCACS\OCACS2018"
 
 os.chdir(prjDir)
 
 from ocacs import ocacs
 
-acs17 = ocacs(year, est, dataOrigin, prjDir)
+#acs17 = ocacs(year, est, dataOrigin, prjDir)
+acs18 = ocacs(dataOrigin)
 
 acs17.acsCreateGdbStructure()
 acs17.acsAddGdbAlias()
