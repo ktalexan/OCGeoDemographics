@@ -19,8 +19,12 @@ from ocacs import ocacs
 #acs17 = ocacs(year, est, dataOrigin, prjDir)
 acs18 = ocacs(dataOrigin)
 
-acs17.acsCreateGdbStructure()
-acs17.acsAddGdbAlias()
+acs18.acsCreateGdbStructure()
+acs18.acsAddGdbAlias()
+
+
+#acs17.acsCreateGdbStructure()
+#acs17.acsAddGdbAlias()
 
 
 xlsxMetadata = os.path.join(prjDir, "Metadata and Documentation", "MasterMetadata.xlsx")
