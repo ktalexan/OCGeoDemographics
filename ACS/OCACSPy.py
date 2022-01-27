@@ -42,11 +42,11 @@ class ocacs(object):
         estList = [i.split(".gdb")[0].split("_")[2] for i in self.gdbListIn]
         geoList = [i.split(".gdb")[0].split("_")[3] for i in self.gdbListIn]
 
-        if prodList.count(prodList[0]) == len(prodList):
+        if prodList.count(prodList[0]) == len(prodList): # check if all items in list are the same
             self.prod = f"{prodList[0]}"
-            if yearList.count(yearList[0]) == len(yearList):
+            if yearList.count(yearList[0]) == len(yearList): # check if all years are the same
                 self.year = int(yearList[0])
-                if estList.count(estList[0]) == len(estList):
+                if estList.count(estList[0]) == len(estList): # check if all estimate years are the same
                     self.est = estList[0]
                     self.prefix = f"OC{self.prod}{self.year}"
         

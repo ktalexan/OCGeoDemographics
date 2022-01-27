@@ -11,6 +11,7 @@
     <OutputPath>.</OutputPath>
     <Name>ACS</Name>
     <RootNamespace>ACS</RootNamespace>
+    <InterpreterId>Global|VisualStudio|agpenv</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +48,9 @@
     </Content>
     <Content Include="ACS17\README.md" />
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|agpenv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
