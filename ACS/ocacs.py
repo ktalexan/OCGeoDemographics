@@ -152,3 +152,9 @@ class ocacs(object):
 
         # Close initialization Function
         return super().__init__()
+
+    ################ FUNCTION: PROCESSING GEODATABASE TABLES ################
+
+    def processTables(self):
+        """Processing Geodatabase Tables Function
+        """
