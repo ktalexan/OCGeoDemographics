@@ -1,4 +1,7 @@
-import os, arcpy
+from ACS.ocacs import ocacs
+import os
+
+import arcpy
 
 #year = 2017
 #est = 5
@@ -17,17 +20,16 @@ dataOrigin = r"C:\Users\ktalexan\OneDrive - County of Orange\Projects\OCGeodemog
 
 os.chdir(prjDir)
 
-from ocacs import ocacs
 
 #acs17 = ocacs(year, est, dataOrigin, prjDir)
 #acs18 = ocacs(dataOrigin)
 acs19 = ocacs(dataOrigin)
 
-#acs18.acsCreateGdbStructure()
-#acs18.acsAddGdbAlias()
+# acs18.acsCreateGdbStructure()
+# acs18.acsAddGdbAlias()
 
-#acs17.acsCreateGdbStructure()
-#acs17.acsAddGdbAlias()
+# acs17.acsCreateGdbStructure()
+# acs17.acsAddGdbAlias()
 
 acs19.acsCreateGdbStructure()
 acs19.acAddGdbAlias()
@@ -51,7 +53,7 @@ geoNames = {
     "TRACT": "Census Tracts",
     "UA": "Urban Areas",
     "ZCTA": "ZIP Code Tabulation Areas"
-    }
+}
 # List of all the geographic code levels
 geoLevels = [key for key in geoNames.keys()]
 
