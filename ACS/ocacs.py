@@ -379,3 +379,13 @@ class ocacs(object):
                                         if field[1:3] == t[1:] and field in fcfields:
                                             print(f"\t\t...adding alias {count} of {na} for {dno}: {alias}")
                                             arcpy.AlterField_management(fc, field, field, f"{dno}: {alias}")
+
+
+    ################ FUNCTION: OBTAIN DATA TABLE VARIABLES ################
+
+    def getTableVars(self):
+        """ Obtaining Table Data Variables and Aliases
+        """
+        
+        
+    
