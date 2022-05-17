@@ -45,8 +45,6 @@ class ocacs(object):
             Script created by Dr. Kostas Alexandridis, GISP, OC Public Works, OC Survey/Geospatial Services, December 2019-2022, Version 2.0
     """
 
-    ################ FUNCTION: CLASS INSTANTIATION ################
-
     def __init__(self, prjPath):
         """Class instantiation function. See class notes.
 
