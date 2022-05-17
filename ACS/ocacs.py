@@ -8,7 +8,7 @@ from time import timedelta
 
 import arcpy
 import import
-import pandas
+from numpy import isinimport, pandas
 
 ###### MAIN OCACS CLASS ######
 
@@ -285,3 +285,97 @@ class ocacs(object):
             "E": {"E01": "X23", "E02": "X23", "E03": "X08", "E04": "X08", "E05": "X08", "E06": "X08", "E07": "X08", "E08": "X24", "E09": "X24", "E10": "X24", "E11": ["X19", "X22"], "E12": ["X19", "X20"], "E13": "X19", "E14": "X27", "E15": "X17", "E16": "X17", "E17": "X17", "E18": "X17", "E19": "X17"},
             "H": {"H01": "X25", "H02": "X25", "H03": "X25", "H04": "X25", "H05": "X25", "H06": "X25", "H07": "X25", "H08": "X25", "H09": "X25", "H10": "X25", "H11": "X25", "H12": "X25", "H13": "X25", "H14": "X25", "H15": "X25", "H16": "X25", "H17": "X25", "H18": "X25", "H19": "X25", "H20": "X25", "H21": "X25", "H22": "X25", "H23": "X25"}
         }
+
+        ################ STEP 3 ################
+
+        print(f"\nSTEP 3: MERGING CENSUS TABLE VARIABLES WITH GEODATABASE GEOGRAPHIES BY CHARACTERISTIC")
+
+        # For each category looping
+        for cat in gdbListOut.keys():
+
+            # Get the matching ACS tables for each of the category groups
+            dlist = tableMatch[cat]
+
+            # Loop through the variables in each group
+            for level, (code, alias) in self.geolookup.items():
+                print(f"\nProcessing level {code}: {alias}")
+
+                # input and output folders
+                inWorkspace = [str for str in self.wrkspListIn if level in os.path.split(str)[1]][0]
+                outWorkspace = os.path.join(self.dataOut, gdbListOut[cat])
+
+                # Name of feature class in the working geodatabase
+                fc = os.path.join(f"{prefix}{code}{cat}")
+
+                # the fields for which the join will be based (first is the geography feature, second is the joined table)
+                joinField1 = "GEOID_Data"
+                joinField2 = "GEOID"
+
+                print("\tSetting-up arcpy environment to input...")
+                arcpy.env.workspace = inWorkspace
+                arcpy.env.overwriteOutput = True
+
+                print("\tObtaining original list of tables...")
+                inTables = arcpy.ListTables("X*")
+
+                print("\tChanging arcpy environment to output...")
+                arcpy.env.workspace = outWorkspace
+                arcpy.env.overwriteOutput = True
+
+                # Looping through each category group and ACS table:
+                for dno, tno, in dlist.items():
+                    print(f"\n\tProcessing group {dno} for table(s) {tno}")
+
+                    # if there is only a single table associated with the group:
+                    if isinstance(tno, str):
+                        # for each ACS table associated
+                        for tname in inTables:
+                            if tno in tname:
+                                inTable = tname
+                                joinTable = os.path.join(inWorkspace, inTable)
+                                # The fields within the category group to be included in the join
+                                levelfields = [key for key in tableLevels[cat][dno].keys()]
+                                # Do a permaanent join
+                                arcpy.JoinField_management(fc, joinField1, joinTable, joinField2, levelfields)
+                                # Get the fields in the feature class after the join
+                                fcfields = [fcfield.name for fcfield in arcpy.listFields(fc)]
+
+                                print(f"\t...Adding aliases to feature class for {tno}")
+                                # Getting the alias list for the category group
+                                aliases = [alias for alias in tableLevels[cat][dno].items()]
+                                # Total number of aliases in the category group
+                                na = len(aliases)
+                                # Loop through the aliases and add them to the feature class
+                                for count, (field, alias) in enumerate(aliases, start=1):
+                                    # if the field table number matches the ACS table we're working in
+                                    if field[1:3] == tno[1:] and field in fcfields:
+                                        print(f"\t\t...adding alias {count} of {na} for {dno}: {alias}")
+                                        arcpy.AlterField_management(fc, field, field, f"{dno}: {alias}")
+
+                    # Else, if there is more than one table associated with the group
+                    elif isinstance(tno, list):
+                        # for each group table
+                        for t in tno:
+                            # for each ACS table
+                            for tname in inTables:
+                                if t in tname:
+                                    inTable = tname
+                                    joinTable = os.path.join(inWorkspace, inTable)
+                                    # The fields within the category group to be included in the join (only fields that belong to the working table)
+                                    levelfields = [key for key in tableLevels[cat][dno].keys() if key[1:3] == t[1:3]]
+                                    # Do a permanent join
+                                    arcpy.JoinField_management(fc, joinField1, joinTable, joinField2, levelfields)
+                                    # Get the fields in the feature class after the join
+                                    fcfields = [fcfield.name for fcfield in arcpy.ListFields(fc)]
+
+                                    print(f"\t...Adding aliases to feature class for {t}")
+                                    # Getting the alias list for the category group
+                                    aliases = [alias for alias in tableLevels[cat][dno].items()]
+                                    # Total number of aliases in the category group
+                                    na = len(aliases)
+                                    # Loop through the aliases and add them to the feature class
+                                    for count, (field, alias) in enumerate(aliases, start=1):
+                                        # if the field table number matches the ACS table we're working in'
+                                        if field[1:3] == t[1:] and field in fcfields:
+                                            print(f"\t\t...adding alias {count} of {na} for {dno}: {alias}")
+                                            arcpy.AlterField_management(fc, field, field, f"{dno}: {alias}")
