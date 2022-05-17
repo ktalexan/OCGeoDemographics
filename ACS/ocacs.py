@@ -158,3 +158,30 @@ class ocacs(object):
     def processTables(self):
         """Processing Geodatabase Tables Function
         """
+
+        ################ STEP 1 ################
+
+        print("\nSTEP 1: RESTRUCTURING ORIGINAL GEODATABASES")
+
+        # setting up the arcpy environment (data-in)
+        arcpy.env.workspace = self.dataIn
+        arcpy.env.overwriteOutput = True
+
+        print(f"\tDefining a list of new geodatabase geographies...")
+
+        # List of geodatabases to be created
+        gdbListOut = {level: f"{self.prefix}{level}.gdb" for level in self.acsCategory}
+
+        # Create new geodatabases for census geographies (delete if exist)
+        if os.path.exists(self.dataOut) is False:
+            os.mkdir(self.dataOut)
+
+        print(f"\tCreating new geodatabases for ACS geographies")
+        for level, gdb in gdbListOut.items():
+            print(f"\t\tCategory: {self.acsCategory[level]}")
+            pathGdb = os.path.join(self.dataOut, gdb)
+            if arcpy.Exists(pathGdb):
+                print(f"\t\t...geodatabase exists. Deleting...")
+                arcpy.Delete_management(pathGdb)
+            print(f"\t\t...Greating geodatabase: {gdb}")
+            arcpy.CreateFileGDB_management(self.dataOut, gdb)
