@@ -2,6 +2,8 @@
 ## OC Survey GeoDemographics Repository
 Dr. Kostas Alexandridis, GISP. OC Public Works, OC Survey/Geospatial Services, 2019.
 
+![Shield Badge: Language-Python](https://img.shields.io/static/v1?style=plastic&label=Language&message=Python&logo=python&color=green&logoColor=green&labelColor=black)
+
 ### Description
 ---
 This repository contains basic code for processing, customizing and displaying geodatabases containing the spatially-explicit data of the US Census American Community Survey (ACS), 5-year estimates for the Orange County, California.
